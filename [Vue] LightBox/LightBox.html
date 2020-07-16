@@ -1,245 +1,285 @@
 <html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <title>Light Box</title>
+    <link rel="shortcut icon" type="image/png" href="image/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/css/swiper.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/css/swiper.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/js/swiper.esm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/js/swiper.esm.bundle.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
+  </head>
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-  <title>Light Box</title>
-  <link rel="shortcut icon" type="image/png" href="image/favicon.png" />
-  <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
-  <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-  <script src="https://unpkg.com/swiper/js/swiper.js"> </script>
-  <script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
-  <script src="https://unpkg.com/vue"></script>
-  <script src="https://unpkg.com/http-vue-loader"></script>
-</head>
-
-<body>
-  <div id="app1">
-    <h3 class="title">lightBox</h3>
-    <div class="lightBox">
-      <figure>
-        <img @click="lightBox('egg')" class="demo" src="image/e1.jpg" alt="">
-        <p>EGG</p>
-      </figure>
-      <figure>
-        <img @click="lightBox('black')" class="demo" src="image/b1.jpg" alt="">
-        <p>BLACK</p>
-      </figure>
-      <figure>
-        <img @click="lightBox('orange')" class="demo" src="image/o1.jpg" alt="">
-        <p>Orange</p>
-      </figure>
-      <div :class="{'mask':mask}" v-if="mask">
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="(item,index2) in showList">
-              <div class="swiper-zoom-container">
-                <img :src="'image/'+item" alt="" class="lazyload">
+  <body>
+    <div id="app1">
+      <h3 class="title">lightBox</h3>
+      <div class="lightBox">
+        <figure>
+          <img
+            @click="lightBox('egg')"
+            class="demo"
+            src="image/e1.jpg"
+            alt=""
+          />
+          <p>EGG</p>
+        </figure>
+        <figure>
+          <img
+            @click="lightBox('black')"
+            class="demo"
+            src="image/b1.jpg"
+            alt=""
+          />
+          <p>BLACK</p>
+        </figure>
+        <figure>
+          <img
+            @click="lightBox('orange')"
+            class="demo"
+            src="image/o1.jpg"
+            alt=""
+          />
+          <p>Orange</p>
+        </figure>
+        <div :class="{'mask':mask}" v-if="mask">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" v-for="(item,index2) in showList">
+                <div class="swiper-zoom-container">
+                  <img :src="'image/'+item" alt="" class="lazyload" />
+                </div>
               </div>
             </div>
+            <!-- 燈箱照片下方swiper的點點 -->
+            <div class="swiper-pagination swiper-pagination-white"></div>
+            <!-- swiper套件的左右按鈕 -->
+            <div class="swiper-button-prev fas fa-angle-left"></div>
+            <div class="swiper-button-next fas fa-angle-right"></div>
+            <button class="closeBtn" @click="lightBox('',true)">
+              <i class="fa fa-times"></i>
+            </button>
           </div>
-          <!-- 燈箱照片下方swiper的點點 -->
-          <div class="swiper-pagination swiper-pagination-white"></div>
-          <!-- swiper套件的左右按鈕 -->
-          <div class="swiper-button-prev fas fa-angle-left"></div>
-          <div class="swiper-button-next fas fa-angle-right"></div>
-          <button class="closeBtn" @click="lightBox('',true)"><i class="fa fa-times"></i></button>
         </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
 <script>
-new Vue({
-  el: "#app1",
-  data: {
-    list: {
-      egg: ['e2.jpg', 'e3.jpg', 'e4.jpg'],
-      black: ['b2.jpg', 'b3.jpg', 'b4.jpg'],
-      orange: ['o2.jpg', 'o3.jpg', 'o4.jpg'],
+  new Vue({
+    el: "#app1",
+    data: {
+      list: {
+        egg: ["e2.jpg", "e3.jpg", "e4.jpg"],
+        black: ["b2.jpg", "b3.jpg", "b4.jpg"],
+        orange: ["o2.jpg", "o3.jpg", "o4.jpg"],
+      },
+      mask: false,
+      showList: [],
     },
-    mask: false,
-    showList: []
-  },
-  methods: {
-    lightBox(showCat, close = false) {
-      if (close) {
-        this.mask = false
-      } else {
-        this.mask = true
-        this.showList = this.list[showCat]
+    methods: {
+      lightBox(showCat, close = false) {
+        if (close) {
+          this.mask = false;
+        } else {
+          this.mask = true;
+          this.showList = this.list[showCat];
 
-        this.$nextTick(() => {
-          // DOM更新了
-          // swiper重新初始化
-          let swiper = new Swiper('.swiper-container', {
-            zoom: true,
-            pagination: {
-              el: '.swiper-pagination',
-            },
-            navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            }
+          this.$nextTick(() => {
+            // DOM更新了
+            // swiper重新初始化
+            let swiper = new Swiper(".swiper-container", {
+              zoom: true,
+              pagination: {
+                el: ".swiper-pagination",
+              },
+              navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              },
+            });
           });
-        })
-      }
-    }
-  }
-})
+        }
+      },
+    },
+  });
 </script>
 <style>
-button,
-img,
-figure,
-div {
-  outline: none;
-}
+  button,
+  img,
+  figure,
+  div {
+    outline: none;
+  }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-span,
-a {
-  font-family: 'Comic Sans MS', Candara, Arial;
-}
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  a {
+    font-family: "Comic Sans MS", Candara, Arial;
+  }
 
-.title {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.lightBox {
-  margin-bottom: 100px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.lightBox p,
-.title {
-  font-size: 1.5em;
-}
-
-.lightBox .demo {
-  width: auto;
-  height: 300px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-.mask {
-  position: fixed;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 100;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-}
-
-.mask img {
-  height: 70vh;
-  width: auto;
-  margin: 0 auto;
-}
-
-.closeBtn {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50px;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  cursor: pointer;
-  color: white;
-  opacity: 0.5;
-  outline: none;
-  z-index: 200;
-  border: solid;
-}
-
-.closeBtn:hover {
-  opacity: 1;
-}
-
-/* 修改swipet樣式的部分 */
-
-.mask .swiper-zoom-container {
-  height: 100vh;
-}
-
-.mask .swiper-container-horizontal>.swiper-pagination-bullets,
-.mask .swiper-pagination-custom,
-.swiper-pagination-fraction {
-  bottom: 40px;
-}
-
-.mask .swiper-button-next:after,
-.mask .swiper-button-prev:after {
-  font-family: 'Font Awesome 5 Free';
-}
-
-.mask .swiper-button-prev:after,
-.mask .swiper-container-rtl .swiper-button-next:after {
-  content: '\f104';
-}
-
-.mask .swiper-button-next:after,
-.mask .swiper-container-rtl .swiper-button-prev:after {
-  content: "\f105";
-}
-
-.mask .fa-angle-left:before,
-.mask .fa-angle-right:before {
-  content: "";
-}
-
-.mask .swiper-pagination-bullet {
-  background: #fff
-}
-
-.mask .swiper-button-prev,
-.mask .swiper-container-rtl .swiper-button-next {
-  /*去除預設的藍色外框*/
-  outline: none;
-}
-
-@media (max-width:1500px) {
+  .title {
+    margin-top: 10px;
+    text-align: center;
+  }
 
   .lightBox {
-    display: block;
-    margin: 10px auto 100px auto;
-  }
-}
-
-@media (max-width:1000px) {
-
-  .lightBox .demo {
-    width: 100%;
-    height: auto;
-    margin: 10px;
-    cursor: pointer;
+    margin-bottom: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 
   .lightBox p,
   .title {
-    font-size: 3em;
+    font-size: 1.5em;
+  }
+
+  .lightBox .demo {
+    width: auto;
+    height: 300px;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  .mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    height: 100%;
+    width: 100%;
+    text-align: center;
   }
 
   .mask img {
-    height: auto;
-    width: 70vw;
+    height: 70vh;
+    width: auto;
     margin: 0 auto;
   }
-}
+
+  .closeBtn {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    color: white;
+    opacity: 0.5;
+    outline: none;
+    z-index: 200;
+    border: solid;
+  }
+
+  .closeBtn:hover {
+    opacity: 1;
+  }
+
+  /* 修改swipet樣式的部分 */
+
+  .mask .swiper-zoom-container {
+    height: 100vh;
+  }
+
+  .mask .swiper-container-horizontal > .swiper-pagination-bullets,
+  .mask .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    bottom: 40px;
+  }
+
+  .mask .swiper-button-next:after,
+  .mask .swiper-button-prev:after {
+    font-family: "Font Awesome 5 Free";
+  }
+
+  .mask .swiper-button-prev:after,
+  .mask .swiper-container-rtl .swiper-button-next:after {
+    content: "\f104";
+  }
+
+  .mask .swiper-button-next:after,
+  .mask .swiper-container-rtl .swiper-button-prev:after {
+    content: "\f105";
+  }
+
+  .mask .fa-angle-left:before,
+  .mask .fa-angle-right:before {
+    content: "";
+  }
+
+  .mask .swiper-pagination-bullet {
+    background: #fff;
+  }
+
+  .mask .swiper-button-prev,
+  .mask .swiper-container-rtl .swiper-button-next {
+    /*去除預設的藍色外框*/
+    outline: none;
+  }
+
+  /*換新的CDN之後樣式設定的地方有改*/
+  .swiper-button-next,
+  .swiper-container-rtl .swiper-button-prev,
+  .swiper-button-prev,
+  .swiper-container-rtl .swiper-button-next {
+    background-image: none;
+  }
+
+  .fa-angle-left,
+  .fa-angle-right {
+    font-size: 40px;
+    color: #fff;
+  }
+  @media (max-width: 1500px) {
+    .lightBox {
+      display: block;
+      margin: 10px auto 100px auto;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .lightBox .demo {
+      width: 100%;
+      height: auto;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .lightBox p,
+    .title {
+      font-size: 3em;
+    }
+
+    .mask img {
+      height: auto;
+      width: 70vw;
+      margin: 0 auto;
+    }
+  }
 </style>
