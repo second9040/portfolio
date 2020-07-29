@@ -1,0 +1,1384 @@
+body {
+  font-family: "微軟正黑體", "Comic Sans MS", Arial;
+}
+
+.bodyContent {
+  position: absolute;
+  left: 300px;
+  transition: all 0.3s;
+}
+
+#spa1 {
+  overflow-y: hidden;
+}
+
+.hideAside {
+  position: absolute;
+  margin-left: -300px;
+  transition: margin-left 0.3s;
+}
+
+.showAside {
+  margin-left: 0;
+}
+
+.showAside ul li label {
+  display: flex;
+}
+
+.showAside ul li input {
+  border: solid 1px #ddd;
+  line-height: 1.8;
+  border-radius: 3px;
+  min-height: 30px;
+  padding: 6px 45px 6px 12px;
+  margin: 30px 0 0 0;
+  width: 70%;
+}
+
+.showAside ul li form i {
+  margin: 30px 0 0 -30px;
+}
+
+.asideMask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+}
+
+.varietyField {
+  background: url(./images/branch-cherry-blossom-environment-flowers-356269.jpg)
+    center center;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+
+.varietyMask {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  width: 90vw;
+  margin: 0 auto;
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 5px;
+  height: 55px;
+  transition-property: background;
+  transition-duration: 0.5s;
+}
+
+.headerBG {
+  background: #ff3329cc;
+  z-index: 100;
+}
+
+.remainAsidePos {
+  left: 300px;
+  padding: 0;
+}
+
+.headerList {
+  width: 50vw;
+  min-width: 750px;
+}
+
+.pageTitle {
+  color: #fff;
+  font-size: 24px;
+  margin: 20px 0 0 60px;
+  width: 25vw;
+}
+
+.pageTitleTop {
+  margin: 15px 0 0 60px;
+}
+
+.pageTitleText {
+  color: #fff;
+  text-decoration: none;
+}
+
+.headerList ul {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#spa1 .burgar_btn {
+  display: none;
+  color: #fff;
+  text-decoration: none;
+}
+
+#spa1 .headerBG .burgar_btn {
+  margin: auto 0;
+}
+
+#spa1 .burgar_btn span {
+  margin: 0 0 0 10px;
+}
+
+.headerList ul li {
+  display: inline;
+  position: relative;
+  height: 40px;
+  margin: 20px;
+}
+
+.headerList ul li a,
+.headerList ul li i {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  padding: 28px 0;
+}
+
+.headerList ul li a.scrollDown,
+.headerList ul li i.scrollDown {
+  padding: 20px 0;
+}
+
+.headerList ul li a::before,
+.headerList ul li a.isClick::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  background: #fff;
+  transition: transform 0.5s;
+  transform-origin: 0 100%;
+}
+
+.headerList ul li a:hover::before,
+.headerList ul li a.isClick::before {
+  transform: scaleX(1);
+}
+
+.burgar_btn:hover {
+  color: #ff3329cc;
+}
+
+#variety {
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.varietyDiv {
+  height: 300px;
+  width: 60vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.varietyDiv_h2 {
+  font-size: 50px;
+  opacity: 0;
+  position: absolute;
+  top: -60px;
+  transition: all 0.5s;
+}
+
+.varietyDiv_p {
+  font-size: 20px;
+  line-height: 35px;
+  opacity: 0;
+  position: absolute;
+  bottom: -60px;
+  width: 55vw;
+  transition: all 0.5s;
+}
+
+.news2020 {
+  margin: 160px 0 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f79f75;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.news2020 .leftTitle,
+.news2020 .rightTitle {
+  height: 60px;
+}
+
+.svgWave {
+  margin-top: -70px;
+  background-size: 20px auto;
+  animation: waveMove 3s linear infinite;
+}
+
+.blossomDetect {
+  background: url(./images/selective-focus-photography-of-white-and-pink-flowers-736850.jpg)
+    center center;
+  background-size: cover;
+  min-height: 600px;
+  color: #fff;
+  position: relative;
+}
+
+.blossomDetectMask {
+  min-height: 600px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blossomDetectMask .text {
+  height: 200px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blossomDetectTitle {
+  font-size: 40px;
+  text-align: center;
+  line-height: 80px;
+  font-weight: bold;
+  opacity: 0;
+  position: absolute;
+  top: -100px;
+  transition: all 1.2s;
+}
+
+.blossomDetectDescription {
+  font-size: 25px;
+  line-height: 40px;
+  opacity: 0;
+  position: absolute;
+  bottom: -100px;
+  transition: all 1.2s;
+  text-align: center;
+}
+
+.detectResult,
+.detailNews,
+.techAndBigData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  width: 80vw;
+  position: relative;
+  height: 60vh;
+}
+
+.selectDetectField {
+  display: none;
+}
+
+.showTitle {
+  margin: 20px 0 -10px 0;
+  background: #fff;
+  text-align: center;
+}
+
+.selectShowType {
+  border: solid 1px #ddd;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.selectShowType div {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: solid 1px #999;
+  margin: 10px 20px;
+  text-align: center;
+}
+
+.selectShowType div:hover {
+  color: #ff3329cc;
+}
+
+.selectShowType .nowType {
+  color: #fff;
+  background: #f79f75;
+  border: none;
+}
+
+.selectShowType div.nowType:hover {
+  background: #ff3329cc;
+  color: #fff;
+}
+
+.selectDetectField {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailNews .selectDetectField {
+  flex-flow: wrap;
+}
+
+.selectDetectField div {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: solid 1px #999;
+  margin: 10px 20px;
+  display: flex;
+  align-items: center;
+  width: 120px;
+  justify-content: center;
+  text-align: center;
+  height: 40px;
+}
+
+.selectDetectField div:hover {
+  color: #ff3329cc;
+}
+
+.selectDetectField .nowShow {
+  color: #fff;
+  background: #f79f75;
+  border: none;
+}
+
+.selectDetectField div.nowShow:hover {
+  background: #ff3329cc;
+  color: #fff;
+}
+
+.detectResult .swiperChangeToImage {
+  width: 450px;
+  height: 340px;
+  left: 80px;
+  position: absolute;
+}
+
+.detailNews .swiperChangeToImage {
+  width: auto;
+  position: absolute;
+  left: 60px;
+  bottom: 80px;
+}
+.swiperChangeToImage img {
+  height: 350px;
+  width: auto;
+}
+
+.detectLeftText,
+.newsText,
+.bigDataText {
+  width: calc(50% - 50px);
+  height: 300px;
+  padding: 50px;
+}
+
+.detectSwiper,
+.newsSwiper,
+.bigDataSwiper {
+  width: 40%;
+  height: 300px;
+  padding: 50px;
+}
+.detectLeftText,
+.newsSwiper,
+.bigDataText {
+  opacity: 0;
+  position: absolute;
+  left: -130px;
+  transition: all 0.8s;
+}
+
+.newsText {
+  order: 1;
+}
+
+.newsSwiper {
+  order: 2;
+}
+.detectSwiper,
+.newsText,
+.bigDataSwiper {
+  opacity: 0;
+  position: absolute;
+  right: -130px;
+  transition: all 0.8s;
+}
+
+.detectLeftText .title,
+.newsText .title,
+.bigDataText .title {
+  color: #f79f75;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.detectLeftText .text,
+.newsText .text,
+.bigDataText .text {
+  line-height: 40px;
+  font-size: 18px;
+}
+
+.cheeryTip {
+  background: url(./images/cherry-blossom-near-a-creek-2187310.jpg) center
+    center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.cheeryTipMask {
+  min-height: 600px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: relative;
+}
+
+.cheeryTipMask .content {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#spa1 .cheeryTipMask ul {
+  padding: 0;
+}
+
+.tipTitle {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  line-height: 50px;
+  opacity: 0;
+  top: -120px;
+  transition: all 1.2s;
+}
+
+.tipDescription {
+  text-align: center;
+  font-size: 20px;
+  line-height: 35px;
+  opacity: 0;
+  bottom: -120px;
+  transition: all 1.2s;
+  padding: 0 15%;
+}
+
+.tipDescription ul li {
+  list-style: none;
+}
+.youtube {
+  margin: 70px auto;
+  padding: 20px;
+  max-width: 1100px;
+}
+.youtube .titleContainer {
+  position: relative;
+}
+.youtube .titleContainer h2 {
+  text-align: center;
+  color: #f79f75;
+}
+
+.youtube .titleContainer h2::before,
+.youtube .titleContainer h2::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  top: 70%;
+  background: #f79f75;
+  width: calc(50% - 100px);
+}
+
+.youtube .titleContainer h2::before {
+  left: 0;
+}
+
+.youtube .titleContainer h2::after {
+  right: 0;
+}
+
+.more {
+  color: #f79f75;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0px;
+  opacity: 0;
+  margin: 70px 0 30px;
+  transition: all 1s;
+}
+
+.form {
+  margin-top: 10px;
+  background: url(./images/air-air-travel-airbus-aircraft-358319.jpg) center
+    center;
+  background-size: cover;
+  min-height: 400px;
+}
+
+.formMask {
+  min-height: 400px;
+  margin-top: 600px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.8s;
+}
+
+.showFromBottom {
+  margin-top: 0px;
+}
+
+.formMask .formContainer {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.formMask .buyForm,
+.formMask .buyResult {
+  width: 510px;
+  padding: 40px;
+  text-align: center;
+  font-size: 23px;
+  color: #ff3329cc;
+}
+
+.buyForm .titleContainer,
+.buyResult .titleContainer {
+  position: relative;
+  margin: 20px 0;
+}
+.buyForm .titleContainer .title::before,
+.buyForm .titleContainer .title::after,
+.buyResult .titleContainer .title::before,
+.buyResult .titleContainer .title::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  top: 52%;
+  width: calc(50% - 70px);
+  background: #f79f75;
+}
+.buyForm .titleContainer .title::before,
+.buyResult .titleContainer .title::before {
+  left: 0;
+}
+.buyForm .titleContainer .title::after,
+.buyResult .titleContainer .title::after {
+  right: 0;
+}
+
+.formContainer .buyForm .formField {
+  margin: 20px 0;
+}
+
+.formContainer .buyForm .formField input,
+.formContainer .buyForm .formField textarea,
+.formContainer .buyForm .formField button {
+  margin: 5px 0;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  color: #888;
+}
+
+.formContainer .buyForm .formField input,
+.formContainer .buyForm .formField textarea {
+  outline-color: #f75858;
+  opacity: 0.9;
+}
+
+.formContainer .buyForm .formField textarea {
+  height: 80px;
+}
+
+.formContainer .buyForm .formField button {
+  background: #f79f75;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.formContainer .buyForm .formField button:hover {
+  background: #ff3329cc;
+}
+.formContainer .buyForm .formField button:disabled {
+  opacity: 0.6;
+  cursor: no-drop;
+}
+
+.form ::-webkit-input-placeholder {
+  color: #ccc;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.form input::-moz-placeholder {
+  color: #ccc;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.form input::-moz-placeholder {
+  color: #ccc;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.form:-ms-input-placeholder {
+  color: #ccc;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.buyResult .formField {
+  margin: 20px 0;
+  text-align: left;
+  line-height: 50px;
+  font-size: 20px;
+  background: rgb(255 255 255 / 0.8);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.buyResult .formField .whatIsWrong a {
+  color: #ff45b5;
+  font-size: 12px;
+  cursor: pointer;
+  line-height: 25px;
+  float: right;
+  text-decoration: none;
+  transition: none;
+  margin: 20px 0 0 40px;
+}
+.buyResult .formField .whatIsWrong a:hover {
+  border-bottom: 1px solid #d68bd0;
+}
+
+.buyResult .formField .whatIsWrong a:hover,
+.buyResult .formField .whatIsWrong a:hover .fas {
+  opacity: 0.8;
+}
+
+.buyResult .formField .whatIsWrong i {
+  margin-right: 5px;
+}
+
+.buyResult .formField .aboutCOVID19 {
+  line-height: 20px;
+  font-size: 16px;
+  color: #ff45b5;
+}
+
+.buyResult .loading {
+  color: #f79f75;
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transition: -webkit-transform 1s linear;
+  transition: transform 1s linear;
+  -webkit-animation: spin 1s linear 1s 5 alternate;
+  animation: spin 1.2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.footer {
+  background: rgb(255 51 41 / 0.5);
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.goTop {
+  background: #f79f75;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.5s;
+  opacity: 0;
+  z-index: 100;
+  border: solid 1px #fff;
+  border-radius: 3px;
+}
+
+.goTop:hover {
+  background: #ff3329cc;
+}
+
+.goTop i {
+  margin: 12px 13px;
+}
+
+.show {
+  opacity: 1;
+}
+
+.show_top {
+  top: 0;
+}
+
+.show_bottom {
+  bottom: 0;
+}
+
+.show_left {
+  left: -30px;
+}
+
+.show_right {
+  right: -30px;
+}
+
+.show_toBig {
+  font-size: 30px;
+}
+
+#cherryNews,
+#cooldetecter,
+#sceneFilm {
+  position: absolute;
+  bottom: 54px;
+}
+
+#Tip {
+  position: absolute;
+  bottom: 13px;
+}
+
+#spa1 .swiper-button-next:after,
+#spa1 .swiper-button-prev:after {
+  font-family: "Font Awesome 5 Free";
+}
+
+#spa1 .swiper-button-prev:after,
+#spa1 .swiper-container-rtl .swiper-button-next:after {
+  content: "\f104";
+  color: #fb87b7;
+  font-size: 25px;
+}
+
+#spa1 .swiper-button-next:after,
+#spa1 .swiper-container-rtl .swiper-button-prev:after {
+  content: "\f105";
+  color: #fb87b7;
+  font-size: 25px;
+}
+
+#spa1 .fa-angle-left:before,
+#spa1 .fa-angle-right:before {
+  content: "";
+}
+/*換新的CDN之後樣式設定的地方有改*/
+#spa1 .swiper-button-next,
+#spa1 .swiper-container-rtl .swiper-button-prev,
+#spa1 .swiper-button-prev,
+#spa1 .swiper-container-rtl .swiper-button-next {
+  background-image: none;
+}
+
+.fa-angle-left,
+.fa-angle-right {
+  font-size: 40px;
+  color: #fb87b7;
+}
+#spa1 .swiper-pagination-bullet {
+  background: #e697e3;
+}
+
+#spa1 .swiper-container {
+  height: 360px;
+}
+
+#spa1 .swiper-pagination,
+#spa1 .swiper-pagination-clickable,
+#spa1 .swiper-pagination-bullets {
+  bottom: 0;
+}
+
+@keyframes waveMove {
+  0% {
+    stroke-dasharray: 0 900;
+  }
+
+  15% {
+    stroke-dasharray: 600 0;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  90% {
+    stroke-dasharray: 600 0;
+    opacity: 0;
+  }
+
+  to {
+    stroke-dasharray: 0 900;
+    opacity: 0;
+  }
+}
+
+.footer .up {
+  display: flex;
+  position: relative;
+}
+
+.footer .up .picture,
+.footer .up .text {
+  width: calc(50% - 50px);
+  padding: 10px;
+  margin: 10px;
+  line-height: 30px;
+}
+.footer .up .text {
+  border-left: 1px solid #fff;
+}
+
+.footer .down {
+  border-top: #fff 1px solid;
+  margin: 0px 30px;
+  padding: 30px 0 0px 0;
+}
+
+/*RWD*/
+@media (max-width: 1300px) {
+  .pageTitle {
+    width: calc(100vw - 300px);
+  }
+
+  #spa1 .burgar_btn {
+    display: initial;
+    float: right;
+    font-size: 20px;
+  }
+
+  .headerList {
+    display: none;
+  }
+
+  .showAside ul {
+    position: fixed;
+    z-index: 1000;
+    top: 30px;
+  }
+
+  .showAside ul li a.scrollDown,
+  .showAside ul li i.scrollDown {
+    padding: 15px 0;
+  }
+
+  .showAside ul {
+    background: #fff;
+    width: 300px;
+    height: 100vh;
+    padding: 0;
+  }
+
+  .showAside ul li {
+    display: block;
+    /*使li垂直列出*/
+    margin: 0;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.035);
+    padding: 0 0 0 20px;
+    height: 50px;
+  }
+
+  .close {
+    /*display: block;*/
+    background: #f8f8f8;
+    font-size: 13px;
+    height: 50px;
+    width: 300px;
+    z-index: 100;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+  }
+
+  .close i {
+    margin: 0 10px 0 0;
+  }
+
+  .showAside ul li a,
+  .showAside ul li i {
+    color: #555;
+    text-align: left;
+    display: block;
+    padding: 15px 0;
+  }
+
+  .showAside ul li a {
+    font-weight: 500;
+  }
+
+  .showAside ul li:hover,
+  .showAside ul li a:hover,
+  .close:hover {
+    color: #f79f75;
+  }
+
+  .detectResult,
+  .detailNews,
+  .techAndBigData {
+    flex-direction: column;
+    height: auto;
+  }
+  .detectLeftText,
+  .newsText,
+  .bigDataText {
+    width: 100%;
+    position: initial;
+    padding: 20px;
+  }
+
+  .detectSwiper,
+  .newsSwiper,
+  .bigDataSwiper {
+    position: initial;
+    padding: 0;
+    width: 500px;
+    /* width: auto; 寫auto就無法正常顯示swiper 不知道為甚麼TAT */
+  }
+
+  #spa1 .detectSwiper .swiper-container,
+  #spa1 .newsSwiper .swiper-container,
+  #spa1 .bigDataSwiper .swiper-container {
+    height: 350px;
+    width: auto;
+  }
+  .detectLeftText .text,
+  .newsText .text,
+  .bigDataText .text {
+    text-align: center;
+  }
+  #spa1 .newsText {
+    order: 1;
+  }
+
+  #spa1 .swiperChangeToImage {
+    order: 2;
+  }
+
+  #spa1 .newsSwiper .swiper-container {
+    order: 2;
+  }
+
+  .detectLeftText,
+  .detectSwiper,
+  .newsText,
+  .newsSwiper,
+  .bigDataText,
+  .bigDataSwiper {
+    height: auto;
+  }
+
+  #spa1 .detectSwiper img,
+  #spa1 .newsSwiper img,
+  #spa1 .bigDataSwiper img {
+    height: 320px;
+  }
+
+  .tipDescription {
+    font-size: 16px;
+  }
+  .selectDetectField {
+    margin-top: 15px;
+  }
+  .detectResult .swiperChangeToImage,
+  .detailNews .swiperChangeToImage {
+    position: initial;
+  }
+}
+
+@media (max-width: 850px) {
+  .header {
+    width: 100%;
+    padding: 0;
+  }
+  .pageTitle {
+    width: 100%;
+  }
+
+  #spa1 .burgar_btn {
+    position: absolute;
+    right: 30px;
+  }
+
+  .formMask .formContainer {
+    flex-direction: column;
+  }
+
+  .tipDescription {
+    padding: 0 20px;
+  }
+
+  .buyResult .formField {
+    line-height: 30px;
+  }
+
+  .formMask .buyResult {
+    order: 1;
+  }
+
+  .formMask .buyForm {
+    order: 2;
+  }
+
+  .formMask .buyForm,
+  .formMask .buyResult {
+    width: 70%;
+    padding: 40px 40px 0px 40px;
+    margin: 0 auto;
+  }
+
+  .formMask .buyResult .formField {
+    font-size: 15px;
+  }
+  .formMask .buyResult .formField p i {
+    margin-bottom: 10px;
+  }
+
+  .formMask .buyForm {
+    padding: 10px 40px 0px 40px;
+  }
+
+  .formMask .buyForm .title,
+  .formMask .buyResult .title {
+    font-weight: 600;
+  }
+}
+@media (max-width: 770px) {
+  #spa1 .header div,
+  #spa1 .blossomDetectDescription {
+    font-size: 20px;
+  }
+
+  #spa1 div ul li a {
+    font-size: 15px;
+  }
+
+  #spa1 div.close {
+    font-size: 13px;
+  }
+
+  .showAside ul li input:focus {
+    border-color: #bbb;
+    outline: 0;
+  }
+  .showAside ul li i.scrollDown {
+    padding: 10px 0 0;
+  }
+
+  #spa1 .cheeryTipMask div {
+    font-size: 16px;
+  }
+  .varietyDiv {
+    height: 250px;
+    width: 90vw;
+  }
+  .varietyDiv_p {
+    width: auto;
+  }
+
+  #spa1 div.blossomDetectTitle {
+    font-size: 40px;
+  }
+
+  .swiperChangeToImage {
+    width: 90vw;
+    overflow: auto;
+  }
+  .swiperChangeToImage img {
+    width: 100%;
+    min-width: 450px;
+    height: auto;
+  }
+
+  #spa1 div.footer {
+    font-size: 16px;
+  }
+
+  #spa1 .detectLeftText .title,
+  #spa1 .newsText .title,
+  #spa1 .bigDataText .title,
+  #spa1 div.more {
+    font-size: 30px;
+  }
+
+  .buyResult .formField .whatIsWrong a {
+    float: none;
+    margin-left: 0;
+    display: block;
+    width: 70px;
+  }
+}
+@media (max-width: 550px) {
+  .pageTitle {
+    width: 80%;
+    margin: 15px;
+  }
+
+  .varietyDiv_h2 {
+    font-size: 40px;
+  }
+
+  #spa1 .burgar_btn {
+    margin: 0px 20px 20px 20px;
+  }
+
+  #spa1 .headerBG .burgar_btn {
+    margin: 0 20px;
+  }
+
+  .header {
+    bottom: inherit;
+    height: auto;
+  }
+
+  .news2020 {
+    margin: 100px 0 30px 0;
+    font-size: 20px;
+  }
+
+  .newsSwiper,
+  .bigDataSwiper {
+    width: 350px;
+  }
+
+  .cheeryTipMask .content {
+    position: initial;
+    top: 0;
+    transform: none;
+  }
+
+  .detectSwiper {
+    width: auto;
+  }
+
+  .selectShowType,
+  .showTitle {
+    display: none;
+  }
+
+  .selectDetectField {
+    flex-direction: column;
+  }
+
+  .swiperChangeToImage {
+    height: 370px;
+  }
+
+  .detectResult,
+  .detailNews,
+  .techAndBigData {
+    margin: 0;
+    padding: 10px;
+    width: auto;
+  }
+
+  .detectResult .swiperChangeToImage,
+  .detailNews .swiperChangeToImage {
+    width: 90vw;
+  }
+  .footer .up {
+    display: block;
+    margin: 0 30px;
+  }
+
+  .footer .up .picture,
+  .footer .up .text {
+    width: 90%;
+  }
+
+  .footer .up .text {
+    border-top: #fff 1px solid;
+    border-left: none;
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  #spa1 .pageTitleText {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  #spa1 .burgar_btn {
+    /*需要蓋不同層的東西，不能放一起*/
+    position: relative;
+    margin: 0;
+    right: 0;
+  }
+
+  #spa1 .headerBG .burgar_btn {
+    /*需要蓋不同層的東西，不能放一起*/
+    margin: 0;
+  }
+  .varietyDiv {
+    font-size: 16px;
+    display: block;
+  }
+
+  .varietyDiv_p {
+    position: initial;
+  }
+
+  .varietyDiv_h2,
+  .varietyDiv_p {
+    position: initial;
+  }
+
+  .news2020 {
+    display: block;
+  }
+  .news2020 .leftTitle,
+  .news2020 .rightTitle {
+    text-align: center;
+  }
+
+  .news2020 .leftTitle {
+    width: 90px;
+    height: 45px;
+    margin: 0 auto;
+  }
+
+  .svgWave {
+    margin-top: -10px;
+  }
+
+  .blossomDetectMask .text {
+    display: block;
+    height: auto;
+    position: initial;
+  }
+
+  .blossomDetectTitle,
+  .blossomDetectDescription {
+    position: initial;
+  }
+  #spa1 div.blossomDetectTitle {
+    margin: 0 auto;
+    padding: 0 15%;
+    line-height: 45px;
+  }
+
+  #spa1 div.blossomDetectDescription {
+    line-height: 30px;
+    font-size: 16px;
+    padding: 10px;
+  }
+  .selectDetectField div {
+    width: 90vw;
+    margin: 5px 10px;
+    padding: 3px;
+    height: 20px;
+  }
+
+  .newsSwiper,
+  .bigDataSwiper {
+    width: 150px;
+  }
+
+  .youtube,
+  .more {
+    margin: 20px;
+  }
+}
+
+@media (max-width: 200px) {
+  .varietyDiv_h2 {
+    font-size: 30px;
+  }
+  .newsSwiper,
+  .bigDataSwiper {
+    width: 110px;
+  }
+
+  .formMask .buyForm,
+  .formMask .buyResult {
+    padding: 15px;
+    overflow: hidden;
+  }
+
+  .goTop {
+    width: 25px;
+    height: 25px;
+  }
+  .goTop i {
+    margin: 3px 6px;
+    font-size: 10px;
+  }
+  .selectDetectField div {
+    margin: 10px;
+    height: 35px;
+  }
+  .footer .up {
+    margin: 0 5px;
+  }
+  .footer .up .picture,
+  .footer .up .text {
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer .up .text {
+    padding: 0;
+    margin: 15px 0 0 5px;
+  }
+
+  .footer .down {
+    margin: 15px 5px;
+  }
+}

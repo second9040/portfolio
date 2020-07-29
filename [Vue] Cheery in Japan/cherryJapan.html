@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>CheeryJapan</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon_cherry.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </head>
+
+  <body>
+    <div class="contentBox" id="spa1">
+      <div :class="{'asideMask':showAside}"></div>
+      <div class="hideAside" :class="{'showAside':showAside}">
+        <div class="close" @click="changeMobileAside(false)">
+          <i class="far fa-times-circle" :class="{'scrollDown':isScroll,'isClick':clicked=='#close'}" ></i>關閉選單
+        </div>
+        <ul>
+          <li v-for="(item,i) in menuTitle" :key=i>
+            <a :class="{'scrollDown':isScroll,'isClick':clicked==item[0]}" @click="goto(item[0])" >{{item[1]}}</a >
+          </li>
+        </ul>
+      </div>
+      <div :class="{'bodyContent':showAside}">
+        <div>
+          <div class="varietyField">
+            <div class="varietyMask">
+              <div class="header" :class="{'headerBG':isScroll,'remainAsidePos':showAside}" >
+                <div class="pageTitle" :class="{'pageTitleTop':isScroll}">
+                  <a class="pageTitleText" href="javascript:void(0)" @click="goto('#spa1')" >日本賞櫻推薦</a>
+                  <a href="javascript:void(0)" class="burgar_btn" @click="changeMobileAside(true)" >
+                    <i class="fas fa-bars"></i><span>選單</span>
+                  </a>
+                </div>
+                <div class="headerList">
+                  <ul>
+                    <li v-for="(item,i) in menuTitle" :key=i>
+                      <a :class="{'scrollDown':isScroll,'isClick':clicked==item[0]}" @click="goto(item[0])" >
+                        {{item[1]}}
+                      </a >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div id="variety">
+                <div class="varietyDiv">
+                  <h2 class="varietyDiv_h2" :class="{'show':show1,'show_top':show1}" >
+                    櫻花品種
+                  </h2>
+                  <p class="varietyDiv_p" :class="{'show':show1,'show_bottom':show1}" >
+                    雖然都以＂櫻花＂統稱，但日本現行栽培的櫻花，品種多達600種以上，依其花形、花色、開花時間不同，展現出不同櫻花品種的美感。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div id="cherryNews"></div>
+          </div>
+          <div class="news2020">
+            <div class="leftTitle">
+              <span>２０２０</span>
+              <svg class="svgWave" viewBox="0 55 500 170" preserveAspectRatio="none" >
+                <path d="M3,146.1c17.1-8.8,33.5-17.8,51.4-17.8c15.6,0,17.1,18.1,30.2,18.1c22.9,0,36-18.6,53.9-18.6 c17.1,0,21.3,18.5,37.5,18.5c21.3,0,31.8-18.6,49-18.6c22.1,0,18.8,18.8,36.8,18.8c18.8,0,37.5-18.6,49-18.6c20.4,0,17.1,19,36.8,19 c22.9,0,36.8-20.6,54.7-18.6c17.7,1.4,7.1,19.5,33.5,18.8c17.1,0,47.2-6.5,61.1-15.6" stroke="#ffb0ff" fill="none" stroke-width="10" ></path>
+              </svg>
+            </div>
+            <div class="rightTitle">日本櫻花季賞櫻情報</div>
+          </div>
+          <div class="blossomDetect">
+            <div class="blossomDetectMask">
+              <div class="text">
+                <div class="blossomDetectTitle" :class="{'show':show2,'show_top':show2}" >
+                  各地櫻花花期預測
+                </div>
+                <div class="blossomDetectDescription" :class="{'show':show2,'show_bottom':show2}" >
+                  開花時期櫻花樹上大約有5成至7成櫻花都是花苞<br />
+                  而當開到8成的時候，便稱為滿開
+                </div>
+              </div>
+              <div id="cooldetecter"></div>
+            </div>
+          </div>
+
+          <div class="detectResult">
+            <div class="detectLeftText" :class="{'show':show3,'show_left':show3}">
+              <p class="title">櫻花開花預測圖</p>
+              <p class="text">
+                「日本氣象株式會社」、「Weather News」和「Weather
+                map」已經公開了2020年的櫻花開花預測圖，立刻來看看你想要去賞櫻地點的開花時間吧！
+              </p>
+              <p class="showTitle">顯示方式</p>
+              <div class="selectShowType">
+                <div :class="{'nowType':selectShowType==='投影片'}" @click="selectShowType='投影片';showPureImage=false;nowShow1='日本氣象株式會社'">投影片</div>
+                <div :class="{'nowType':selectShowType==='單張圖片'}" @click="selectShowType='單張圖片';showPureImage=true">單張圖片</div>
+              </div>
+              <div class="selectDetectField" v-show="showPureImage">
+                <div v-for="(item,i) in detectSwiper" :key=i :class="{'nowShow':nowShow1===item[1]}" @click="setNowImage(item[1],item[0],'detect')">
+                  {{item[1]}}
+                </div>
+              </div>
+            </div>
+            <div class="detectSwiper" :class="{'show':show3,'show_right':show3}" >
+              <div class="swiper-container swiper1" v-show="showPureImage===false">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" v-for="(item,i) in detectSwiper" :key=i>
+                    <div class="swiper-zoom-container">
+                      <img :src="'images/2020sakuranewsnew'+item[0]+'.jpg'" :alt="item[1]" />
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-bullets swiperPage1" ></div>
+                <div class="swiper-button-prev fas fa-angle-left"></div>
+                <div class="swiper-button-next fas fa-angle-right"></div>
+              </div>
+              <div class="swiperChangeToImage" v-show="showPureImage" >
+                <img v-for="(item,i) in detectSwiper" :key=i :src="'images/2020sakuranewsnew'+item[0]+'.jpg'" v-if="showPureImage && nowShow1===item[1]" :alt="item[1]" >
+              </div>
+            </div>
+          </div>
+          <div class="detailNews">
+            <div class="newsSwiper" :class="{'show':show4,'show_left':show4}" >
+              <div class="swiper-container swiper2"  v-show="showPureImage2===false">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" v-for="(item,i) in areaSwiper" :key=i >
+                    <div class="swiper-zoom-container">
+                      <img :src="'images/2020sakuranewsnew'+item[0]+'.jpg'" :alt="item[1]"  />
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-white swiperPage2" ></div>
+                <div class="swiper-button-prev fas fa-angle-left"></div>
+                <div class="swiper-button-next fas fa-angle-right"></div>
+              </div>
+            </div>
+            <div class="swiperChangeToImage" v-show="showPureImage2" >
+              <img  v-for="(item,i) in areaSwiper" :key=i :src="'images/2020sakuranewsnew'+item[0]+'.jpg'" v-if="showPureImage2 && nowShow2===item[1]" :alt="item[1]"  />
+            </div>
+            <div class="newsText" :class="{'show':show4,'show_right':show4}" >
+              <p class="title">櫻花開花詳細情報</p>
+              <p class="text">
+                大家關注的地區情報在此！櫻花「開花預測日」與「滿開日」為何時？
+              </p>
+              <p class="showTitle">顯示方式</p>
+                <div class="selectShowType">
+                  <div :class="{'nowType':selectShowType2==='投影片'}" @click="selectShowType2='投影片';showPureImage2=false;nowShow1='九州地區'">投影片</div>
+                  <div :class="{'nowType':selectShowType2==='單張圖片'}" @click="selectShowType2='單張圖片';showPureImage2=true">單張圖片</div>
+                </div>
+              <div class="selectDetectField" v-show="showPureImage2" >
+                <div v-for="(item,i) in areaSwiper" :key=i :class="{'nowShow':nowShow2===item[1]}" @click="setNowImage(item[1],item[0],'area')">
+                  {{item[1]}}
+                </div>
+              </div>
+              <div id="Tip"></div>
+            </div>
+          </div>
+          <div class="cheeryTip">
+            <div class="cheeryTipMask">
+              <div class="content">
+                <div class="tipTitle" :class="{'show':show5,'show_top':show5}" >
+                  賞櫻小知識
+                </div>
+                <div class="tipDescription" :class="{'show':show5,'show_bottom':show5}" >
+                  <ul>
+                    <div v-for="(item,i) in cherryTips" :key=i>
+                      <p>{{item[0]}}</p>
+                      <li>{{item[1]}}</li>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+              <div id="sceneFilm"></div>
+            </div>
+          </div>
+          <div class="youtube">
+            <div class="titleContainer">
+              <h2>景點推薦影片</h2>
+            </div>
+            <iframe width="100%" :height="calcIframeHeight" src="https://www.youtube.com/embed/lRArSK6aYVk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+          </div>
+          <div class="more" id="buyTicket" :class="{'show':show6,'show_toBig':show6}" >
+            買票看櫻花
+          </div>
+          <div class="form">
+            <div class="formMask" :class="{'showFromBottom':show6}">
+              <div class="formContainer">
+                <div class="buyForm">
+                  <div class="titleContainer">
+                    <span class="title">訂票資訊</span>
+                  </div>
+                  <div class="formField">
+                    <input type="text" placeholder="日期" />
+                    <textarea placeholder="其他備註"></textarea>
+                    <button @click="sendInfo" :disabled="loading">查詢航班</button>
+                  </div>
+                </div>
+                <div class="buyResult">
+                  <div class="titleContainer">
+                    <span class="title">查詢結果</span>
+                  </div>
+                  <div v-if="loading===false&&searchRes===false" class="searchMsg">  輸入訂票資訊查詢航班</div>
+                  <div class="loading" v-if="loading"><i class="fas fa-spinner"></i></div>
+                  <div class="formField" v-if="searchRes">
+                    由於新型冠狀病毒肺炎疫情狀況，目前請大家暫時不要出國。
+                    <span class="whatIsWrong">
+                      <a @click="showText=true" href="javascript:void(0)" ><i class="fas fa-question"></i>了解詳情</a>
+                      <p v-if="showText" class="aboutCOVID19">新型冠狀病毒肺炎是一次由嚴重急性呼吸系統症候群冠狀病毒2型（SARS-CoV-2）所引發的全球大流行疫情</p>
+                    </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer">
+            <div class="up">
+              <div class="picture">
+                <p> 圖片資源 <a href="https://www.pexels.com/zh-tw/">Pexels</a></p>
+                <p v-for="(item,i) in picRes" :key=i>
+                  {{item[1]}}
+                  <a :href="item[0]" target="_blank">連結</a>
+                </p>
+              </div>
+              <div class="text">
+                <p> 文案參考</p>
+                <p  v-for="(item,i) in textRes" :key=i>
+                  <a :href="item[0]" target="_blank">{{item[1]}}</a>
+                </p>
+              </div>
+            </div>
+            <div class="down"> 版型參考 <p><a href="https://ecc.pma.mdu.edu.tw/"  target="_blank">明道大學精緻農學系</a></p> </div>
+          </div>
+          <div class="goTop" :class="{'show':isScroll}" @click="goto('#spa1')">
+            <i class="fa fa-chevron-up" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  new Vue({
+    el: "#spa1",
+    data: {
+      isScroll: false,
+      clicked: "",
+      show1: false,
+      show2: false,
+      show3: false,
+      show4: false,
+      show5: false,
+      show6: false,
+      showAside: false,
+      hideAside: true,
+      calcIframeHeight: 500,
+      showText:false,
+      loading:false,
+      searchRes:false,
+      nowShow1:"日本氣象株式會社",
+      nowShow2:"九州地區",
+      selectShowType:"投影片",
+      selectShowType2:"投影片",
+      showPureImage:false,
+      showPureImage2:false,
+      menuTitle:[
+        ["#spa1","櫻花品種"], ["#cherryNews","賞櫻情報"], ["#cooldetecter","開花預測圖"], ["#Tip","賞櫻小知識"], ["#sceneFilm","景點推薦"]
+      ],
+      detectSwiper:[
+        [29,"日本氣象株式會社"],[30,"Weather News"],[38,"Weather map"]
+      ],
+      areaSwiper:[
+        [31,"九州地區"],[32,"關西地區"],[33,"中國、四國地區"], [35,"關東地區"],[34,"中部、北陸地區"],[36,"東北地區"],[37,"北海道地區"]
+      ],
+      cherryTips:[
+        ["日本櫻花去哪看最美？","東京櫻花、京都櫻花、大阪櫻花是台灣人最愛賞櫻勝地；不喜歡人擠人則可以考慮到九州、東北、北海道等賞櫻。"],
+        ["日本各地最佳賞櫻時間？","日本的櫻花每年從九州率先綻放，一路到四國、關東、關西、東北，最後是北海道，然後圓滿結束。開花後約一周達到滿開狀態，櫻花此時最為茂盛，是賞櫻最佳時機。"],
+        ["日本櫻花花期多久？","櫻花花期五個重要的階段為：含苞 - 開花 - 滿開 (八分開，最美時刻) - 凋零 (櫻吹雪) - 長出綠芽 (葉櫻)。櫻花花期不長，開花後1周是滿開，滿開5-7天就開始凋謝，若碰到下雨打落花期就更短囉。"]
+      ],
+      picRes:[
+        ["https://www.pexels.com/zh-tw/photo/356269/","攝影師：邱 韬，"],
+        ["https://www.pexels.com/zh-tw/photo/736850/","攝影師：Kat Jayne，"],
+        ["https://www.pexels.com/zh-tw/photo/2187310/","攝影師：Evgeny Tchebotarev，"],
+        ["https://www.pexels.com/zh-tw/photo/358319/","攝影師：Pixabay，"],
+        ["https://www.letsgojp.com/archives/360151","開花預測圖，"],
+      ],
+      textRes:[
+        ["https://aliciaisme.pixnet.net/blog/post/44615524-%E3%80%90%E6%97%A5%E6%9C%AC%E6%AB%BB%E8%8A%B1%E6%83%85%E5%A0%B1%E3%80%91%E8%AA%8D%E8%AD%98%E6%97%A5%E6%9C%AC%E6%AB%BB%E8%8A%B1%E5%93%81%E7%A8%AE","【日本櫻花情報】認識日本櫻花品種"],
+        ["https://www.skyscanner.com.tw/news/8-amazing-cherry-blossoms-places-in-taiwan-202002","台灣櫻花全攻略：2020台灣櫻花開花期預測+台灣賞櫻景點推薦"],
+        ["https://www.letsgojp.com/archives/360151","【3.26最新】2020日本櫻花預測最前線：賞櫻開花日、滿開日總整理！"],
+        ["https://anrine910070.pixnet.net/blog/post/223609488-%E3%80%90%E6%97%A5%E6%9C%AC%E6%AB%BB%E8%8A%B1%E5%89%8D%E7%B7%9A%E9%A0%90%E6%B8%AC%E3%80%912019%E6%97%A5%E6%9C%AC%E6%AB%BB%E8%8A%B1%E5%AD%A3%E8%B3%9E%E6%AB%BB%E3%80%81","【日本櫻花前線預測】2020日本櫻花季賞櫻情報、滿開時間總整理"],
+        ["https://zh.wikipedia.org/wiki/2019%E5%86%A0%E7%8A%B6%E7%97%85%E6%AF%92%E7%97%85%E7%96%AB%E6%83%85","嚴重特殊傳染性肺炎疫情"]
+      ]
+     },
+    methods: {
+      setNowImage(img,name,type){
+        this.nowShow1=type==='detect'?img:this.nowShow1
+        this.nowShow2=type==='area'?img:this.nowShow2
+      },
+      sendInfo(){
+        this.loading=true
+        this.searchRes=false
+        this.showText=false
+        setTimeout(() => {
+          this.loading=false
+          this.searchRes=true
+        }, 1000);
+      },
+      goto(pos) {
+        this.changeMobileAside(false);
+        setTimeout(() => {
+          document.querySelector(pos).scrollIntoView({
+            behavior: "smooth",
+          });
+        }, 180);
+      },
+      scroll() {
+        let nowScroll = document.scrollingElement.scrollTop;
+        this.isScroll = nowScroll > 0 ? true : false;
+        let nowHeight = 0;
+        let varietyHeight = document.getElementsByClassName("varietyField")[0]
+          .offsetHeight;
+        let news2020Height =
+          document.getElementsByClassName("news2020")[0].offsetHeight +
+          document.getElementsByClassName("blossomDetect")[0].offsetHeight;
+        let detectHeight = document.getElementsByClassName("detectResult")[0] .offsetHeight;
+        let newsHeight = document.getElementsByClassName("detailNews")[0].offsetHeight;
+        let tipHeight =
+          document.getElementsByClassName("cheeryTip")[0].offsetHeight +
+          document.getElementsByClassName("youtube")[0].offsetHeight;
+        let formHeight = document.getElementsByClassName("form")[0] .offsetHeight;
+        if (this.show1 && nowScroll > (nowHeight+ varietyHeight-300)) {
+          this.show2 = true;
+          nowHeight = nowHeight + varietyHeight;
+        }
+        if (this.show2 && nowScroll > (nowHeight+ news2020Height-300)) {
+          this.show3 = true; // detectResult
+          nowHeight = nowHeight + news2020Height;
+        }
+        if (this.show3 && nowScroll > (nowHeight+detectHeight-300)) {
+          this.show4 = true; // detailNews
+          nowHeight = nowHeight + detectHeight;
+        }
+        if (this.show4 && nowScroll > (nowHeight+ newsHeight-300)) {
+          this.show5 = true; // cheeryTip
+          nowHeight = nowHeight + newsHeight;
+        }
+        if (this.show5 && nowScroll > (nowHeight+tipHeight-300)) {
+          this.show6 = true; // form
+        }
+      },
+      changeMobileAside(state) {
+        this.showAside = state;
+        this.hideAside = !state;
+      },
+      checkResize() {
+        this.showAside = false;
+        this.showText=false
+        let tmp=this.showPureImage
+        let check = document.getElementsByClassName("youtube")[0].offsetWidth - 200;
+        this.calcIframeHeight = check < 500 ? (check > 60 ? check : 60) : 500;
+        let screenWidth=document.getElementsByTagName('body')[0].offsetWidth
+        this.showPureImage=this.showPureImage2=screenWidth>549?false:true
+        this.selectShowType=this.selectShowType2=this.showPureImage?"單張圖片":"投影片"
+      },
+      newSwiper(name,el){
+        new Swiper(name, {
+          autoplay: true,
+          pagination: {
+            el: el,
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+      }
+    },
+    mounted() {
+      window.addEventListener("resize", this.checkResize);
+      this.checkResize();
+      this.show1 = true;
+      this.isScroll = document.scrollingElement.scrollTop > 0 ? true : false;
+      window.addEventListener("scroll", this.scroll);
+      this.newSwiper(".swiper1",".swiperPage1")
+      this.newSwiper(".swiper2",".swiperPage2")
+    },
+  });
+</script>
