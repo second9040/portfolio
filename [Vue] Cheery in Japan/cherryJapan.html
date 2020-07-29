@@ -92,7 +92,9 @@
                 「日本氣象株式會社」、「Weather News」和「Weather
                 map」已經公開了2020年的櫻花開花預測圖，立刻來看看你想要去賞櫻地點的開花時間吧！
               </p>
-              <p class="showTitle">顯示方式</p>
+              <div class="titleBox">
+                <button class="showTitle">顯示方式</button>
+              </div>
               <div class="selectShowType">
                 <div :class="{'nowType':selectShowType==='投影片'}" @click="selectShowType='投影片';showPureImage=false;nowShow1='日本氣象株式會社'">投影片</div>
                 <div :class="{'nowType':selectShowType==='單張圖片'}" @click="selectShowType='單張圖片';showPureImage=true">單張圖片</div>
@@ -144,7 +146,9 @@
               <p class="text">
                 大家關注的地區情報在此！櫻花「開花預測日」與「滿開日」為何時？
               </p>
-              <p class="showTitle">顯示方式</p>
+              <div class="titleBox">
+                <button class="showTitle">顯示方式</button>
+              </div>
                 <div class="selectShowType">
                   <div :class="{'nowType':selectShowType2==='投影片'}" @click="selectShowType2='投影片';showPureImage2=false;nowShow1='九州地區'">投影片</div>
                   <div :class="{'nowType':selectShowType2==='單張圖片'}" @click="selectShowType2='單張圖片';showPureImage2=true">單張圖片</div>
@@ -281,9 +285,9 @@
       ],
       picRes:[
         ["https://www.pexels.com/zh-tw/photo/356269/","攝影師：邱 韬，"],
-        ["https://www.pexels.com/zh-tw/photo/736850/","攝影師：Kat Jayne，"],
-        ["https://www.pexels.com/zh-tw/photo/2187310/","攝影師：Evgeny Tchebotarev，"],
-        ["https://www.pexels.com/zh-tw/photo/358319/","攝影師：Pixabay，"],
+        ["https://www.pexels.com/zh-tw/photo/92340/","攝影師：Samuel Walker，"],
+        ["https://www.pexels.com/zh-tw/photo/460635/","攝影師：Pixabay，"],
+        ["https://www.pexels.com/zh-tw/photo/585004/","攝影師：Shamia Casiano，"],
         ["https://www.letsgojp.com/archives/360151","開花預測圖，"],
       ],
       textRes:[

@@ -231,8 +231,7 @@ body {
 }
 
 .blossomDetect {
-  background: url(./images/selective-focus-photography-of-white-and-pink-flowers-736850.jpg)
-    center center;
+  background: url(./images/cherry-blossom-92340.jpg) center center;
   background-size: cover;
   min-height: 600px;
   color: #fff;
@@ -242,7 +241,7 @@ body {
 .blossomDetectMask {
   min-height: 600px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -293,19 +292,29 @@ body {
 .selectDetectField {
   display: none;
 }
-
+.titleBox {
+  display: flex;
+  justify-content: center;
+}
 .showTitle {
-  margin: 20px 0 -10px 0;
+  margin: 20px 0 -2px 0;
   background: #fff;
   text-align: center;
+  color: #ddd;
+  font-weight: bold;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  width: 120px;
 }
 
 .selectShowType {
-  border: solid 1px #ddd;
-  border-radius: 3px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 15px 0 10px;
+  border: solid 2px #ddd;
+  margin-top: -10px;
 }
 .selectShowType div {
   cursor: pointer;
@@ -445,8 +454,7 @@ body {
 }
 
 .cheeryTip {
-  background: url(./images/cherry-blossom-near-a-creek-2187310.jpg) center
-    center;
+  background: url(./images/pexels-photo-460635.jpeg) center center;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -536,7 +544,7 @@ body {
 
 .form {
   margin-top: 10px;
-  background: url(./images/air-air-travel-airbus-aircraft-358319.jpg) center
+  background: url(./images/white-and-blue-passenger-plane-585004.jpg) center
     center;
   background-size: cover;
   min-height: 400px;
