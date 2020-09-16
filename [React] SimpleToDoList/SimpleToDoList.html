@@ -31,8 +31,9 @@
         const [showToDo, setShowToDo] = React.useState(false);
         const [showErrMsg, setShowErrMsg] = React.useState(false);
         const [dataCellInfo, setDataCellInfo] = React.useState({
-          "2020/09/17": "特休",
+          "2020/09/04": "羽球",
         });
+        const [dataCellClick, setDataCellClick] = React.useState([-1, -1]);
 
         let Header = () => {
           let monthText = new Map([
@@ -130,7 +131,15 @@
           );
         };
 
-        let dateCellStyle = (date, item, index, week, monthDay, thisMonth) => {
+        let dateCellStyle = (
+          date,
+          item,
+          index,
+          week,
+          monthDay,
+          thisMonth,
+          dataCellClick
+        ) => {
           let todayDate = new Date();
           let today = `${todayDate.getFullYear()}${todayDate.getMonth()}${todayDate.getDate()}`;
           let dataCellDate = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`;
@@ -141,6 +150,7 @@
           let style = "";
           if (index == 0 || index == 6) style += "weekend ";
           if (
+            // dataCellClick[0] == dataCellDate ||
             today == dataCellDate &&
             7 - thisMonthFirstDay + index + (week - 1) * 7 + 1 == date.getDate()
           )
@@ -216,6 +226,9 @@
             <tr>
               {day.map((item, index) => (
                 <td
+                  onClick={() => {
+                    setDataCellClick([calcDate(item, index), week]);
+                  }}
                   key={index}
                   className={dateCellStyle(
                     date,
@@ -223,7 +236,8 @@
                     index,
                     week,
                     monthDay,
-                    thisMonth
+                    thisMonth,
+                    dataCellClick
                   )}
                 >
                   {calcDate(item, index)}
@@ -285,8 +299,14 @@
         };
 
         let ToDoDialog = () => {
-          const [title, setTitle] = React.useState("");
-          const [toDoDate, setToDoDate] = React.useState("");
+          const [title, setTitle] = React.useState("TEST");
+          const [toDoDate, setToDoDate] = React.useState(
+            `${date.getFullYear()}/${
+              date.getMonth() + 1 >= 10
+                ? date.getMonth() + 1
+                : "0" + (date.getMonth() + 1)
+            }/${date.getDate() >= 10 ? date.getDate() : "0" + date.getDate()}`
+          );
           const [remark, setRemark] = React.useState("");
 
           return (
@@ -327,7 +347,10 @@
                         if (
                           /^\d{4}\/\d{1,2}\/\d{1,2}$/.test(event.target.value)
                         ) {
-                          setShowErrMsg(false);
+                          setToDoDate(event.target.value);
+                          setShowErrMsg((val) => {
+                            val;
+                          });
                         }
                       }}
                     ></input>
@@ -338,7 +361,7 @@
                   >
                     日期格式為 2020/9/1 或 2020/09/01
                   </div>
-                  <div className="rowStyle">
+                  {/*  <div className="rowStyle">
                     <div className="inputTitle">備註</div>
                     <div>
                       <input
@@ -349,7 +372,7 @@
                         }}
                       ></input>
                     </div>
-                  </div>
+                  </div>*/}
                   <div className="dialogBtnPos">
                     <div
                       className="dialogBtnStyle cancelBtn"
