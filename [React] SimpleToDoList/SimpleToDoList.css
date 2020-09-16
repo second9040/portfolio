@@ -1,0 +1,194 @@
+.header {
+  margin: 30px 30px 10px;
+}
+
+.header h4 {
+  text-align: center;
+  width: 160px;
+}
+
+.header button {
+  margin: 20px;
+}
+
+.monthContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: -60px;
+}
+
+.addToDo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  border-radius: 3px;
+  background: #eeffee;
+  color: #00cc44;
+  border: #00aa44 1px solid;
+  outline: none;
+}
+
+.addToDo:hover {
+  background: #ccffcc;
+}
+
+.calandar {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #ddd;
+  margin: 10px 30px;
+}
+
+.dateLine {
+  padding: 0 0 10vh;
+}
+
+.dateLine {
+  border-right: 2px solid #ddd;
+}
+
+table,
+table tr,
+table th,
+table td {
+  border: solid 2px #ddd;
+  border-collapse: collapse;
+  border-radius: 5px;
+  width: 145px;
+  height: 12vh;
+}
+
+table {
+  border: none;
+  width: 95%;
+  margin: 20px auto;
+}
+
+table td {
+  vertical-align: baseline;
+  padding: 5px;
+  word-break: break-word;
+  transition: all 0.1s;
+}
+
+table td:hover {
+  background: #efffff;
+}
+
+.weekend {
+  color: red;
+}
+
+.notThisMonth {
+  background: #eee;
+}
+
+.today {
+  background: #ddffee;
+}
+
+.todoDialog {
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  background: #fff;
+  width: 40vw;
+  height: 30vh;
+  z-index: 2;
+  border-radius: 5px;
+}
+
+.dialogMask {
+  opacity: 0.6;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #666;
+  top: 0;
+}
+
+.dialogContainer {
+  position: relative;
+  height: 100%;
+}
+
+.dialogBtnPos {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+}
+
+.dialogBtnStyle {
+  margin: 20px 10px;
+  color: #00cc44;
+  border: #00aa44 1px solid;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cancelBtn {
+  color: #999;
+  border: #999 solid 1px;
+}
+
+.cancelBtn:hover {
+  background: #ddd;
+  color: #999;
+  border: #999 solid 1px;
+}
+
+.saveBtn:hover {
+  background: #29b87a;
+  color: #fff;
+  border: #00cc44 solid 1px;
+}
+
+.rowStyle {
+  margin: 20px;
+}
+
+.rowStyle .inputTitle {
+  margin-top: 30px;
+}
+
+.rowStyle input {
+  background: #eee;
+  height: 35px;
+  margin: -25px 60px;
+  border-radius: 5px;
+  width: 85%;
+}
+
+.todoList {
+  background: #53e0a3;
+  padding: 2px 10px;
+  margin: 2px -5px;
+}
+
+.errMsg {
+  margin: -10px 19px -20px;
+  color: red;
+}
+
+/* 先這樣，之後有空再做RWD*/
+
+body {
+  min-width: 800px;
+}
+
+@media (max-width: 660px) {
+  .monthContainer {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px -20px;
+  }
+
+  button.addToDo {
+    position: relative;
+    margin: -10px 10px 10px;
+  }
+}

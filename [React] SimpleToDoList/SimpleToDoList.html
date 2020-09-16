@@ -1,0 +1,409 @@
+<html>
+  <head>
+    <meta
+      charset="utf-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <title>SimpleToDoList</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/iconfinder_General_Office_41_2530793.png"
+    />
+    <link rel="stylesheet" href="./SimpleToDoList.css" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const SimpleToDoList = () => {
+        const [date, setDate] = React.useState(new Date());
+        const [showToDo, setShowToDo] = React.useState(false);
+        const [showErrMsg, setShowErrMsg] = React.useState(false);
+        const [dataCellInfo, setDataCellInfo] = React.useState({
+          "2020/09/17": "特休",
+        });
+
+        let Header = () => {
+          let monthText = new Map([
+            [0, "January"],
+            [1, "February"],
+            [2, "March"],
+            [3, "April"],
+            [4, "May"],
+            [5, "June"],
+            [6, "July"],
+            [7, "August"],
+            [8, "September"],
+            [9, "October"],
+            [10, "November"],
+            [11, "December"],
+          ]);
+          return (
+            <div className="header">
+              <h3>Calandar | To Do List</h3>
+              <div className="monthContainer">
+                <button
+                  onClick={() => {
+                    changeMonth(-1);
+                  }}
+                >
+                  <i className="fas fa-caret-left"></i>
+                </button>
+                <h4>
+                  {date.getFullYear()}/{monthText.get(date.getMonth())}
+                </h4>
+                <button
+                  onClick={() => {
+                    changeMonth(1);
+                  }}
+                >
+                  <i className="fas fa-caret-right"></i>
+                </button>
+              </div>
+              <button
+                className="addToDo"
+                onClick={() => {
+                  setShowToDo(true);
+                }}
+              >
+                <i className="fas fa-plus"></i>
+              </button>
+            </div>
+          );
+        };
+
+        let changeMonth = (type) => {
+          let y = date.getFullYear();
+          let m = date.getMonth() + type + 1;
+          if (m == 0) {
+            y -= 1;
+            m = 12;
+          } else if (m == 13) {
+            y += 1;
+            m = 1;
+          }
+          let today = new Date();
+          if (m == today.getMonth() + 1) {
+            setDate(new Date(`${y}/${m}/${today.getDate()}`));
+          } else setDate(new Date(`${y}/${m}/1`));
+        };
+
+        let Calandar = () => {
+          let weekday = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ];
+          let calcDay = (month) => {
+            let day = [];
+            for (let i = 0; i < 31; i++) {
+              day.push(i);
+            }
+            return day;
+          };
+          return (
+            <div>
+              <div className="calandar">
+                {weekday.map((item, index) => (
+                  <div key={index}>{item}</div>
+                ))}
+              </div>
+              <div className="calandar dateLine">
+                <div>{calcDay(date.getMonth())}</div>
+              </div>
+            </div>
+          );
+        };
+
+        let dateCellStyle = (date, item, index, week, monthDay, thisMonth) => {
+          let todayDate = new Date();
+          let today = `${todayDate.getFullYear()}${todayDate.getMonth()}${todayDate.getDate()}`;
+          let dataCellDate = `${date.getFullYear()}${date.getMonth()}${date.getDate()}`;
+          let thisMonthFirstDay =
+            date.getDate() > 1
+              ? 7 - ((date.getDate() - date.getDay()) % 7) + 1
+              : date.getDay();
+          let style = "";
+          if (index == 0 || index == 6) style += "weekend ";
+          if (
+            today == dataCellDate &&
+            7 - thisMonthFirstDay + index + (week - 1) * 7 + 1 == date.getDate()
+          )
+            style += "today ";
+          if (
+            7 - thisMonthFirstDay + index + (week - 1) * 7 + 1 >
+              monthDay[thisMonth] ||
+            (week == 0 && item > 20)
+          ) {
+            style += "notThisMonth";
+          }
+          return style;
+        };
+
+        let countDay = (date, week) => {
+          let todayDate = date.getDate();
+          let todayDay = date.getDay();
+          let thisMonth = date.getMonth();
+          let year = date.getFullYear();
+          let thisMonthFirstDay =
+            todayDate > 1 ? 7 - ((todayDate - todayDay) % 7) + 1 : todayDay;
+          let monthDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+          monthDay[1] =
+            (year % 4 == 0 && year % 100 > 0) || year % 400 == 0 ? 29 : 28;
+          let day = [];
+
+          let count = thisMonthFirstDay;
+          for (let x = 0; x < 7; x++) {
+            if (x >= thisMonthFirstDay) {
+              day.push(x - thisMonthFirstDay + 1);
+            } else {
+              if (week < 4) {
+                day.push(
+                  monthDay[thisMonth == 0 ? 0 : thisMonth - 1] - count-- + 1
+                );
+              } else day.push(monthDay[thisMonth] - count-- + 1);
+            }
+          }
+
+          let calcDate = (item, index) => {
+            let showDate =
+              week > 0
+                ? week > 3
+                  ? (item + week * 7) % monthDay[thisMonth] < 10
+                    ? (item + week * 7) % monthDay[thisMonth] == 0
+                      ? monthDay[thisMonth]
+                      : (item + week * 7) % monthDay[thisMonth]
+                    : (item + week * 7) % monthDay[thisMonth]
+                  : (item + week * 7) %
+                    monthDay[thisMonth == 0 ? 0 : thisMonth - 1]
+                : item + week * 7;
+
+            return showDate;
+          };
+
+          let checkToDo = (dateObj, monthDate, week) => {
+            let month = dateObj.getMonth() + 1;
+            if (week == 0 && monthDate > 10) {
+              month = dateObj.getMonth() == 0 ? 11 : dateObj.getMonth();
+            } else if (week > 2 && monthDate < 20) {
+              month = dateObj.getMonth() == 11 ? 0 : dateObj.getMonth() + 2;
+            }
+            let x =
+              dataCellInfo[
+                `${dateObj.getFullYear()}/${month < 10 ? "0" + month : month}/${
+                  monthDate >= 10 ? monthDate : "0" + monthDate
+                }`
+              ];
+            return x;
+          };
+
+          return (
+            <tr>
+              {day.map((item, index) => (
+                <td
+                  key={index}
+                  className={dateCellStyle(
+                    date,
+                    item,
+                    index,
+                    week,
+                    monthDay,
+                    thisMonth
+                  )}
+                >
+                  {calcDate(item, index)}
+                  <p
+                    className="todoList"
+                    style={{
+                      display: checkToDo(date, calcDate(item, index), week)
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    {checkToDo(date, calcDate(item, index), week)}
+                  </p>
+                </td>
+              ))}
+            </tr>
+          );
+        };
+
+        let TableCalandar = () => {
+          let weekday = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ];
+
+          return (
+            <div>
+              <table>
+                <tbody>
+                  <tr>
+                    {weekday.map((item, index) => (
+                      <th
+                        key={index}
+                        className={
+                          item == "Sunday" || item == "Saturday"
+                            ? "weekend"
+                            : ""
+                        }
+                      >
+                        {item}
+                      </th>
+                    ))}
+                  </tr>
+                  {countDay(date, 0)}
+                  {countDay(date, 1)}
+                  {countDay(date, 2)}
+                  {countDay(date, 3)}
+                  {countDay(date, 4)}
+                  {countDay(date, 5)}
+                </tbody>
+              </table>
+            </div>
+          );
+        };
+
+        let ToDoDialog = () => {
+          const [title, setTitle] = React.useState("");
+          const [toDoDate, setToDoDate] = React.useState("");
+          const [remark, setRemark] = React.useState("");
+
+          return (
+            <div>
+              <div
+                style={{ display: showToDo ? "block" : "none" }}
+                className="todoDialog"
+              >
+                <div className="dialogContainer">
+                  <div className="rowStyle">
+                    <div className="inputTitle">標題</div>
+                    <div>
+                      <input
+                        type="text"
+                        value={title}
+                        onChange={(event) => {
+                          setTitle(event.target.value);
+                        }}
+                      ></input>
+                    </div>
+                  </div>
+                  <div className="rowStyle">
+                    <div className="inputTitle">日期</div>
+                    <input
+                      type="text"
+                      value={toDoDate}
+                      placeholder={`${date.getFullYear()}/${
+                        date.getMonth() + 1 >= 10
+                          ? date.getMonth() + 1
+                          : "0" + (date.getMonth() + 1)
+                      }/${
+                        date.getDate() >= 10
+                          ? date.getDate()
+                          : "0" + date.getDate()
+                      }`}
+                      onChange={(event) => {
+                        setToDoDate(event.target.value);
+                        if (
+                          /^\d{4}\/\d{1,2}\/\d{1,2}$/.test(event.target.value)
+                        ) {
+                          setShowErrMsg(false);
+                        }
+                      }}
+                    ></input>
+                  </div>
+                  <div
+                    className="errMsg"
+                    style={{ display: showErrMsg ? "block" : "none" }}
+                  >
+                    日期格式為 2020/9/1 或 2020/09/01
+                  </div>
+                  <div className="rowStyle">
+                    <div className="inputTitle">備註</div>
+                    <div>
+                      <input
+                        type="text"
+                        value={remark}
+                        onChange={(event) => {
+                          setRemark(event.target.value);
+                        }}
+                      ></input>
+                    </div>
+                  </div>
+                  <div className="dialogBtnPos">
+                    <div
+                      className="dialogBtnStyle cancelBtn"
+                      onClick={() => {
+                        setShowToDo(false);
+                      }}
+                    >
+                      取消
+                    </div>
+                    <div
+                      className="dialogBtnStyle saveBtn"
+                      onClick={() => {
+                        if (/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(toDoDate)) {
+                          setShowToDo(false);
+                          let dateStr = toDoDate.split("/");
+                          dateStr[1] =
+                            dateStr[1].length == 1
+                              ? `0${dateStr[1]}`
+                              : dateStr[1];
+                          dateStr[2] =
+                            dateStr[2].length == 1
+                              ? `0${dateStr[2]}`
+                              : dateStr[2];
+                          dateStr = dateStr.join("/");
+                          let todo = dataCellInfo;
+                          todo[dateStr] = title;
+                          setDataCellInfo(todo);
+                        } else {
+                          setShowErrMsg(true);
+                        }
+                      }}
+                    >
+                      保存
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="dialogMask"
+                style={{ display: showToDo ? "block" : "none" }}
+              ></div>
+            </div>
+          );
+        };
+
+        return (
+          <div>
+            <Header />
+            <TableCalandar />
+            <ToDoDialog />
+          </div>
+        );
+      };
+      ReactDOM.render(<SimpleToDoList />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
