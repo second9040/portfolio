@@ -8,7 +8,7 @@ var config = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: process.env.NODE_ENV === 'production' ? 'portfolio' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/portfolio/' : '/',
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
