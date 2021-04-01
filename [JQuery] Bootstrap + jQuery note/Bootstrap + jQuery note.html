@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/png" href="jquery-icon.png" />
+  </head>
+  <body>
+    <div class="pageTitle">Bootstrap + jQuery 筆記</div>
+    <div class="theme">
+      <span class="dark">深</span><span class="light">淺</span>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <ul class="nav navStyle"></ul>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-1">
+          <div class="note">
+            文章內容主要參考
+            <a
+              class="tutorial"
+              target="_blank"
+              href="https://getbootstrap.com/docs/3.3/"
+              >BootStrap</a
+            >、
+            <a
+              class="tutorial"
+              target="_blank"
+              href="https://www.runoob.com/bootstrap/bootstrap-tutorial.html"
+              >Bootstrap 教程</a
+            >
+            、
+            <a class="tutorial" target="_blank" href="https://jquery.com/"
+              >jQuery</a
+            >
+            與
+            <a
+              class="tutorial"
+              target="_blank"
+              href="https://www.runoob.com/jquery/jquery-tutorial.html"
+              >jQuery 教程</a
+            >。
+          </div>
+          <div class="note">
+            <p>
+              <code>jQuery</code> 檔案務必在
+              <code>bootstrap.min.js</code> 之前引入。
+            </p>
+            <p>
+              <code>Bootstrap</code> 使用了一些 HTML5 元素和 CSS
+              屬性。為了讓這些正常工作，您需要使用 HTML5 文檔類型
+              <code>Doctype</code>。
+            </p>
+            <p>
+              為了讓 <code>Bootstrap</code> 開發的網站有自適應效果，需要添加
+              viewport <code>meta</code> 標籤，最好也設定
+              charset，避免中文顯示問題。
+            </p>
+          </div>
+
+          <div class="title">實作練習 - Bootstrap</div>
+          <div class="note">
+            <code>Bootstrap</code> 的 <code>.container</code> class
+            用於包裹頁面上的內容。
+          </div>
+          <div class="subTitle">響應式圖像</div>
+          <div class="note">
+            通過添加 <code>.img-responsive</code> class 可以讓
+            <code>Bootstrap</code> 中的圖像對響應式佈局的支持更友好。
+          </div>
+          <div class="subTitle">Bootstrap Grid System (網格系統)</div>
+          <div class="note">
+            <p>網格選項</p>
+            <div class="row">
+              <div class="col-sm-3 col-xs-6">
+                <p>手機</p>
+                <p>&lt; 768px</p>
+                <p>.col-xs-</p>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <p>平板</p>
+                <p>&gt;= 768px</p>
+                <p>.col-sm-</p>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <p>中型電腦</p>
+                <p>&gt;= 992px</p>
+                <p>.col-md-</p>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <p>大型電腦</p>
+                <p>&gt;= 1200px</p>
+                <p>.col-lg-</p>
+              </div>
+            </div>
+          </div>
+          <p>
+            沒特別指定的話就是 <code>display: block</code>，一個 div 即為一行。
+          </p>
+          <div class="note">
+            <p>
+              <code>Bootstrap</code> 也支援表格，上面這個表格也可以透過在
+              <code>&lt;table&gt;</code> 加上 <code>.table</code> class
+              來完成，樣式的部分會更好處理。
+            </p>
+            <table class="table table-bordered">
+              <tr>
+                <th>手機</th>
+                <th>平板</th>
+                <th>中型電腦</th>
+                <th>大型電腦</th>
+              </tr>
+              <tr>
+                <th>&lt; 768px</th>
+                <th>&gt;= 768px</th>
+                <th>&gt;= 992px</th>
+                <th>&gt;= 1200px</th>
+              </tr>
+              <tr>
+                <th>.col-xs-</th>
+                <th>.col-sm-</th>
+                <th>.col-md-</th>
+                <th>.col-lg-</th>
+              </tr>
+            </table>
+          </div>
+          <p>其餘的東西有需要再查看文件就好。</p>
+          <div class="title">實作練習 + 筆記 - JQuery</div>
+          <div class="work">
+            <div class="subTitle">hide/show/toggle</div>
+            <div class="btn btn-default demo_Show_Hide_Text">click to demo</div>
+            <div class="demoDiv demo_Show_Hide_Div">show/hide/toggle</div>
+
+            <div class="subTitle">fadeIn/fadeOut/fadeToggle</div>
+            <div class="btn btn-default demo_Fade_Text">click to demo</div>
+            <div class="demoDiv demo_Fade_Div">fadeIn/fadeOut/fadeToggle</div>
+            <div class="name">
+              <code>fadeTo</code> $(selector).fadeTo(speed,opacity,callback);
+            </div>
+            <p>可漸變為指定的 opacity。</p>
+            <p><code>speed</code> 無默認值，須直接指定 slow、fast、Time。</p>
+            <div class="btn btn-default demo_FadeTo_Text">click to demo</div>
+            <p>手動或拖拉設定透明度：</p>
+            <input
+              type="text"
+              placeholder="設定透明度: 0~1，預設0.5"
+              id="fadeTo_opacity_text"
+              value="0.5"
+            />
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              id="fadeTo_opacity_range"
+            />
+
+            <div class="demoDiv demo_FadeTo_Div">fadeTo()</div>
+            <p>
+              <code>&lt;input&gt;</code> 設定值的方式用
+              <code>.val ()</code> 完成。
+            </p>
+
+            <div class="subTitle">slideDown/slideUp/slideToggle</div>
+            <div class="btn btn-default demo_Slide_Text">click to demo</div>
+            <div class="demoDiv demo_Slide_Div">
+              slideDown/slideUp/slideToggle
+            </div>
+            <p>跟 fade 系列一樣，後面帶的參數都是 (speed,callback)</p>
+
+            <div class="name">
+              <p>
+                <code>animate()</code>
+                $(selector).animate({params},speed,callback);
+              </p>
+            </div>
+            <div>
+              <p>
+                必需的 <code>params</code> 參數定義形成動畫的
+                <code>CSS</code> 屬性。
+              </p>
+              <p>
+                可選的
+                <code>speed</code>
+                參數規定效果的時長。它可以取以下值：<code>slow</code>、<code
+                  >fast</code
+                >
+                或毫秒。
+              </p>
+              <p>
+                可選的 <code>callback</code> 參數是動畫完成後所執行的函數名稱。
+              </p>
+              <p>
+                可以同時設定多個 <code>css</code> 屬性，注意當使用
+                <code>animate()</code>
+                時，必須使用駝峰式標記法書寫所有的屬性名，比如，必須使用
+                <code>paddingLeft</code> 而不是 padding-left， 使用
+                <code>marginRight</code> 而不是 margin-right 等等。
+              </p>
+              <p>
+                <code>.stop()</code> 可以停止當前動畫，<code>.stop(true)</code>
+                可以停止當前所有的動畫。
+              </p>
+            </div>
+
+            <div class="subTitle">animate()</div>
+            <div class="btn btn-default demo_Animate_Text">click to demo</div>
+            <div class="demoDiv demo_Animate_Div">animate/revert</div>
+            <div class="name"><code>callback</code> 方法</div>
+            <p>執行順序前後的差別。</p>
+            <div>
+              <pre>
+  $("button").click(function(){
+    $("p").hide("slow",function(){
+      alert("段落现在被隐藏了"); // 隱藏效果完全實現後出現此提示訊息
+    });
+  });
+
+  $("button").click(function(){
+    $("p").hide(1000);
+    alert("段落现在被隐藏了"); // 隱藏效果完成前就出現此提示訊息
+  });
+</pre
+              >
+            </div>
+
+            <div class="subTitle">
+              獲得 DOM 內容 - text()、html()、val()、css()、attr()
+            </div>
+            <p><code>text()</code> - 設置或返回所選元素的文本內容</p>
+            <p>
+              <code>html()</code> - 設置或返回所選元素的內容（包括HTML 標記）
+            </p>
+            <p><code>val()</code> - 設置或返回表單字段的值</p>
+            <p><code>css()</code> - 返回指定的 CSS 屬性的值</p>
+            <p><code>attr()</code> - 獲取 html tag 屬性值</p>
+            <p>
+              ()裡面放入字串即可設定值， attr() 值的設定方式則是 attr(屬性名稱,
+              屬性值)。
+            </p>
+            <p>note: css() 與 attr() 比較</p>
+            <pre>
+$("p").css("background-color") // 返回首個匹配 p 的 background-color 值        
+$("#runoob").attr("href") // 取得 #runoob 的 href 的屬性值</pre
+            >
+            <div class="subTitle">添加新的 HTML 內容</div>
+            <p>
+              <code>append()</code> - 在被選元素的結尾插入內容
+              [仍然在该元素的内部]
+            </p>
+            <p>
+              <code>prepend()</code> - 在被選元素的開頭插入內容
+              [仍然在该元素的内部]
+            </p>
+            <p><code>after()</code> - 在被選元素之後插入內容 [在該元素外面]</p>
+            <p><code>before()</code> - 在被選元素之前插入內容 [在該元素外面]</p>
+
+            <div class="subTitle">刪除元素/內容</div>
+            <p><code>remove()</code> - 刪除被選元素（及其子元素）</p>
+            <p><code>empty()</code> - 從被選元素中刪除子元素</p>
+            <pre>
+$('#div1').remove(); 
+#div1也會被刪掉
+
+$('#div1').empty();
+#div1還在，裡面的東西清空		
+
+$('p').remove('.italic');
+可以指定參數，比如只移除 class=italic 的 &lt;p&gt;</pre
+            >
+
+            <div class="subTitle">CSS 操作</div>
+            <p><code>addClass()</code> - 向被選元素添加一個或多個類</p>
+            <p><code>removeClass()</code> - 從被選元素刪除一個或多個類</p>
+            <p>
+              <code>toggleClass()</code> - 對被選元素進行添加/刪除類的切換操作
+            </p>
+
+            <div class="subTitle">獲得/設置尺寸</div>
+            <p>
+              <code>width()</code>、
+              <code>height()</code>、<code>innerWidth()</code>、
+              <code>innerHeight()</code>、<code>outerWidth()</code>、
+              <code>outerHeight()</code>
+            </p>
+            <div class="subTitle">遍歷 - 向上遍歷 DOM 樹</div>
+            <p><code>parent()</code> - 返回被選元素的直接父元素</p>
+            <p><code>parents()</code> - 返回被選元素的的所有祖先元素</p>
+            <p>
+              <code>parentsUntil()</code> -
+              返回介於兩個給定元素之間的所有祖先元素
+            </p>
+            <pre>
+  &lt;div class="div1"&gt;div (曾祖父元素)
+    &lt;ul class="ul1"&gt;ul (祖父元素)  
+      &lt;li class="li1"&gt;li (父元素)
+        &lt;span class="span1"&gt;span&lt;/span&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;   
+  &lt;/div&gt;
+
+.div1 *
+{ 
+	display: block;
+	border: 2px solid #aaa;
+	color: #aaa;
+	padding: 5px;
+	margin: 15px;
+}
+
+$(".span1").parent().css({"color":"deeppink","border":"2px solid deeppink"});
+// $(".li1").parents().css({"color":"lightblue","border":"2px solid lightblue"});
+$(".ul1").parentsUntil(".parentDemo").css({"color":"orange","border":"2px solid orange"});        </pre
+            >
+            <p>code 運行結果：</p>
+
+            <div class="parentDemo">
+              <div class="div1">
+                div (曾祖父元素)
+                <ul class="ul1">
+                  ul (祖父元素)
+                  <li class="li1">
+                    li (父元素)
+                    <span class="span1">span</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <p><code>parents()</code> 可能汙染樣式，謹慎使用。</p>
+            <p>
+              <code>parentsUntil</code> 最高可以把
+              <code>DOCTYPE</code> 都放進去。
+            </p>
+
+            <div class="subTitle">遍歷 - 向下遍歷 DOM 樹</div>
+            <p><code>children()</code> - 返回被選元素的直接子元素</p>
+            <p><code>find()</code> - 返回被選元素的所有子元素</p>
+
+            <div class="subTitle">遍歷 - each</div>
+            <p><code>each()</code> - 為每個匹配元素規定要運行的函數</p>
+            <pre>
+&lt;ul&gt;
+  &lt;li&gt;foo&lt;/li&gt;
+  &lt;li&gt;bar&lt;/li&gt;
+&lt;/ul&gt;
+
+$( "li" ).each(function( index ) {
+  console.log( index + ": " + $( this ).text() );
+});
+
+/*
+0: foo
+1: bar
+*/</pre
+            >
+            <div class="subTitle">遍歷 - 水平遍歷</div>
+            <p><code>siblings()</code> - 返回被選元素的所有同級元素</p>
+            <p><code>next()</code> - 返回被選元素的下一個同級元素</p>
+            <p><code>nextAll()</code> - 返回被選元素的所有跟隨的同級元素</p>
+            <p><code>nextUntil()</code></p>
+
+            <pre>
+&lt;div&gt;div (父元素)
+  &lt;p&gt;p&lt;/p&gt;
+  &lt;span&gt;span&lt;/span&gt;
+  &lt;h2&gt;h2&lt;/h2&gt;
+  &lt;h3&gt;h3&lt;/h3&gt;
+  &lt;h4&gt;h4&lt;/h4&gt;
+  &lt;h5&gt;h5&lt;/h5&gt;
+  &lt;h6&gt;h6&lt;/h6&gt;
+  &lt;p&gt;p&lt;/p&gt;
+&lt;/div&gt;
+
+$("h2").nextAll().css({"color":"red","border":"2px solid red"}); // h3 h4 h5 h4 h5 h6 與 p 被上色。    
+$("h2").nextUntil("h6").css({"color":"red","border":"2px solid red"}); // h3 h4 h5 被上色</pre
+            >
+            <p>
+              <code>prev()</code> - 返回被選元素的上一個同級元素 (與 next()
+              相反)
+            </p>
+            <p>
+              <code>prevAll()</code> - 返回被選元素的所有跟隨的同級元素
+              (參數位置與 nextAll() 相反)
+            </p>
+            <p><code>prevUntil()</code> - 參數位置與 nextUntil() 相反</p>
+
+            <div class="subTitle">遍歷 - 過濾</div>
+            <p><code>first()</code> - 返回被選元素的首個元素</p>
+            <p><code>last()</code> - 返回被選元素的最後一個元素</p>
+            <p><code>eq()</code> - 指定被選元素的索引</p>
+            <p>
+              <code>filter()</code> -
+              允許您規定一個標準。不匹配這個標準的元素會被從集合中刪除，匹配的元素會被返回
+            </p>
+            <p>
+              <code>not()</code> - 與 filter()
+              相反，允許您規定一個標準。不匹配這個標準的元素會被返回
+            </p>
+
+            <pre>
+ &lt;h1&gt;欢迎访问我的主页 &lt;/h1&gt;
+ &lt;p&gt;菜鸟教程 (index 0). &lt;/p&gt;
+ &lt;p class="url"&gt;http://www.runoob.com (index 1)。 &lt;/p&gt;
+ &lt;p&gt;google (index 2). &lt;/p&gt;
+ &lt;p class="url"&gt;http://www.google.com (index 3)。 &lt;/p&gt;
+
+ $("p").eq(1).css("background-color","yellow"); // index (索引) 為 1 的 http://www.runoob.com 將被上色
+ $("p").filter(".url").css("background-color","yellow"); // class == "url"，index == 1 3 的 &lt;p&gt; 將被上色 
+ $("p").not(".url").css("background-color","yellow"); // class !== "url"，index == 0 2 的 &lt;p&gt; 將被上色         </pre
+            >
+
+            <div class="subTitle">AJAX load()</div>
+            <p>$(selector).load(URL,data,callback);</p>
+            <p>
+              <code>load()</code>
+              方法從服務器加載數據，並把返回的數據放入被選元素中。
+            </p>
+            <p>必需的 URL 參數規定您欲加載的 URL。</p>
+            <p>
+              可選的 callback 參數規定當 load()
+              方法完成後所要允許的回調函數，回調函數可以設置不同的參數：
+            </p>
+            <p><code>responseTxt</code> - 包含調用成功時的結果內容</p>
+            <p><code>statusTXT</code> - 包含調用的狀態</p>
+            <p><code>xhr</code> - 包含 XMLHttpRequest 對象</p>
+
+            <div class="subTitle">AJAX get() 和 post() 方法</div>
+            <p>
+              <code>$.get()</code> 方法通過 HTTP GET 請求從服務器上請求數據：
+              $.get(URL,callback);
+            </p>
+            <p>
+              <code>$.post()</code> 方法通過 HTTP POST 請求向服務器提交數據：
+              $.post(URL,data,callback);
+            </p>
+            <p>可選的 data 參數規定此請求要攜帶的參數</p>
+
+            <pre>
+$("button").click(function(){
+  $.post("/try/ajax/demo_test_post.php",{
+    name:"菜鸟教程",
+    url:"http://www.runoob.com"
+  },
+  function(data,status){
+    alert("数据: \n" + data + "\n状态: " + status);
+  });
+});        </pre
+            >
+            <div class="subTitle">noConflict()</div>
+            <p>
+              jQuery 使用 <code>$</code> 符號作為 jQuery 的簡寫，某些 javascript
+              框架也使用 $ 符號作為簡寫（就像
+              jQuery），如果您在用的兩種不同的框架正在使用相同的簡寫符號，有可能導致腳本停止運行。
+            </p>
+            <p>
+              為避免此類問題發生，這樣的狀況之下可以使用
+              <code>noConflict()</code> 方法。
+            </p>
+            <p>
+              <code>noConflict()</code> 會釋放對 $
+              標識符的控制，這樣其他腳本就可以使用它了。
+            </p>
+            <p>同時，您仍然可以通過全名替代簡寫的方式來使用 jQuery：</p>
+            <pre>
+$.noConflict();
+jQuery(document).ready(function(){
+  jQuery("button").click(function(){
+    jQuery("p").text("jQuery 仍然在工作!");
+  });
+});</pre
+            >
+            <p>
+              也可以創建自己的簡寫，<code>noConflict()</code> 可返回對 jQuery
+              的引用，您可以把它存入變量，以供稍後使用。
+            </p>
+
+            <pre>
+  var jq = $.noConflict();
+  jq(document).ready(function(){
+    jq("button").click(function(){
+      jq("p").text("jQuery 仍然在工作!");
+    });
+  });  
+</pre
+            >
+            <div class="subTitle">jQuery 實例整理</div>
+            <p>
+              <a
+                class="tutorial"
+                target="_blank"
+                href="https://www.runoob.com/jquery/jquery-examples.html"
+                >jquery-examples</a
+              >
+              - 更多實例演示
+            </p>
+            <div class="subTitle">jQuery 選擇器</div>
+            <p>
+              <a
+                class="tutorial"
+                target="_blank"
+                href="https://www.runoob.com/jquery/jquery-ref-selectors.html"
+                >jQuery 选择器</a
+              >
+              - selectors 整理
+            </p>
+            <div class="note">
+              <p>
+                <code>$("p:first-child")</code> -
+                屬於其父元素的第一個子元素的所有 &lt;p&gt; 元素
+              </p>
+              <p>
+                <code>$("p:first-of-type")</code> - 屬於其父元素的第一個
+                &lt;p&gt; 元素的所有 &lt;p&gt; 元素
+              </p>
+              <p>這兩個有點難懂，感覺好像有點多此一舉，直接看執行結果吧。</p>
+              <pre>
+  &lt;div class="demo_seletor_first"&gt;
+    &lt;p class="demo_seletor_first_p"&gt;The first paragraph in body.&lt;/p&gt;
+    
+    &lt;div style="border:1px solid;"&gt;
+      &lt;p class="demo_seletor_first_p"&gt;The first paragraph in div.&lt;/p&gt;
+      &lt;p class="demo_seletor_first_p"&gt;The last paragraph in div.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+    
+    &lt;div style="border:1px solid;"&gt;
+      &lt;span&gt;This is a span element.&lt;/span&gt;
+      &lt;p class="demo_seletor_first_p"&gt;The first paragraph in another div.&lt;/p&gt;
+      &lt;p class="demo_seletor_first_p"&gt;The last paragraph in another div.&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;p class="demo_seletor_first_p"&gt;The last paragraph in body.&lt;/p&gt;
+  &lt;/div&gt;  
+
+  $("p.demo_seletor_first_p:first-child").css("background-color","orange");
+  $("p.demo_seletor_first_p:first-of-type").css("text-align","center");</pre
+              >
+              <div class="demo_seletor_first">
+                <p class="demo_seletor_first_p">The first paragraph in body.</p>
+
+                <div style="border: 1px solid">
+                  <p class="demo_seletor_first_p">
+                    The first paragraph in div.
+                  </p>
+                  <p class="demo_seletor_first_p">The last paragraph in div.</p>
+                </div>
+                <br />
+
+                <div style="border: 1px solid">
+                  <span>This is a span element.</span>
+                  <p class="demo_seletor_first_p">
+                    The first paragraph in another div.
+                  </p>
+                  <p class="demo_seletor_first_p">
+                    The last paragraph in another div.
+                  </p>
+                </div>
+
+                <p class="demo_seletor_first_p">The last paragraph in body.</p>
+              </div>
+            </div>
+
+            <div class="note">
+              <p>
+                <code>$("div > p")</code> - &lt;div&gt; 元素的直接子元素的所有
+                &lt;p&gt; 元素
+              </p>
+              <p>
+                <code>$("div p")</code> - &lt;div&gt; 元素的後代的所有 &lt;p&gt;
+                元素
+              </p>
+              <p>
+                <code>$("div + p")</code> - 每個 &lt;div&gt; 元素相鄰的下一個
+                &lt;p&gt; 元素
+              </p>
+              <p>
+                <code>$("div ~ p")</code> - &lt;div&gt; 元素同級的所有 &lt;p&gt;
+                元素
+              </p>
+            </div>
+            <div class="note">
+              <p><code>$("[href]")</code> - 所有帶有 href 屬性的元素</p>
+              <p>
+                <code>$("[href='default.htm']")</code> - 所有帶有 href
+                屬性且值等於 "default.htm" 的元素
+              </p>
+              <p>
+                <code>$("[href$='.jpg']")</code> - 所有帶有 href 屬性且值以 .jpg
+                結尾的元素
+              </p>
+              <p>
+                <code>$("[title|='Tomorrow']")</code> - 所有帶有 title
+                属性且值等於 'Tomorrow' 或者以 'Tomorrow' 開頭的元素
+              </p>
+              <p>
+                <code>$("[title^='Tomorrow']")</code> - 所有帶有 title
+                属性且值等於 'Tomorrow' 或者以 'Tomorrow' 開頭的元素
+              </p>
+              <p>|= 這個看起來好像跟 ^= 一樣...???</p>
+              <p>
+                <code>$("[title~='hello']")</code> - 所有帶有 title 属性且值為
+                "hello" 的元素
+              </p>
+              <p>好像有點多此一舉？跟直接寫 = 暫時沒看出什麼差別。</p>
+              <p>
+                <code>$("[title*='hello']")</code> - 所有帶有 title 属性且值包含
+                "hello" 的元素
+              </p>
+              <p>title = '1hello' 'hello1' 'hello' 等，皆可</p>
+              <p><code>$(":input")</code> - 所有 input 元素</p>
+              <p>
+                <code>$(":checkbox")</code> - 所有帶有 type="checkbox" 的 input
+                元素
+              </p>
+              <p><code>$(":checked")</code> - 所有選中的複選框選項</p>
+              <p>
+                <code>$("li:hidden")</code> - 匹配所有不可見元素，或 type 為
+                hidden 的元素
+              </p>
+              <p><code>$("li:visible")</code> - 匹配所有可見元素</p>
+            </div>
+            <div class="subTitle">jQuery 雜項方法</div>
+            <p><code>get()</code> - 獲取由選擇器指定的 DOM 元素。</p>
+            <p>$(selector).get(index)</p>
+            <pre>
+  &lt;p&gt;1。&lt;/p&gt;
+  &lt;p&gt;2。&lt;/p&gt;
+  &lt;p&gt;3。&lt;/p&gt;
+  &lt;p&gt;4。&lt;/p&gt;
+  
+  &lt;button&gt;獲取 p 的 DOM 元素&lt;/button&gt;
+  &lt;div class="div1"&gt;&lt;/div&gt; // 點擊後出現 1。
+  &lt;div class="div2"&gt;&lt;/div&gt; // 點擊後出現 4。
+
+$(document).ready(function(){
+  $("button").click(function(){
+    x=$("p").get(0);
+    y=$("p").get(3);
+    
+    $(".div1").text(x.nodeName + ": " + x.innerHTML);
+    $(".div2").text(y.nodeName + ": " + y.innerHTML);
+  });
+});
+</pre
+            >
+            <div class="note">
+              <a
+                class="tutorial"
+                target="_blank"
+                href="https://www.runoob.com/jquery/jquery-ref-misc.html"
+                >jQuery 杂项方法</a
+              >
+              - 更多方法整理
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <button class="btn btn-default goTop" type="button">
+            <span
+              class="glyphicon glyphicon-chevron-up"
+              aria-hidden="true"
+            ></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<style>
+  :root {
+    --mainColor: #3ebb59;
+    --backgroundColor: #222;
+    --textColor: #fff;
+    --demoBtnColor: #aaa;
+  }
+  body {
+    background: var(--backgroundColor);
+    color: var(--textColor);
+    font-size: 16px;
+  }
+  .title {
+    padding: 15px 0 0;
+    font-size: 24px;
+    position: relative;
+  }
+  .pageTitle {
+    font-size: 24px;
+    background: var(--backgroundColor);
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 999;
+    padding: 15px;
+    border-bottom: solid 1px;
+  }
+  .theme {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 999;
+  }
+  .theme:hover {
+    cursor: pointer;
+  }
+  .theme span {
+    padding: 5px;
+    border-radius: 3px;
+    border: solid 1px;
+    margin: 0 5px;
+    color: #fff;
+  }
+  .theme .dark {
+    background: var(--mainColor);
+  }
+  .theme .light {
+    background: var(--demoBtnColor);
+  }
+  .theme span:hover {
+    background: var(--mainColor);
+  }
+  .subTitle {
+    color: var(--mainColor);
+    font-size: 24px;
+    text-decoration: underline;
+  }
+  .note {
+    padding: 15px 0;
+  }
+  .tutorial {
+    background: var(--mainColor);
+    color: #fff;
+    font-weight: bold;
+    padding: 1px 3px;
+    border-radius: 3px;
+    transition: all 0.1s;
+  }
+  .tutorial:hover {
+    background: #fff;
+    color: var(--mainColor);
+  }
+  .btn {
+    background: var(--mainColor);
+    color: #fff;
+    margin: 10px 0;
+  }
+  .goTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+  }
+  .name {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    line-break: anywhere;
+  }
+  .demoDiv {
+    padding: 10px;
+    text-align: center;
+    margin: 10px 0;
+    background: var(--demoBtnColor);
+    border-radius: 5px;
+  }
+  table th,
+  table td {
+    text-align: center;
+  }
+
+  .work {
+    padding: 10px 0;
+  }
+
+  input[type="text"],
+  input[type="range"] {
+    color: #222;
+    width: 200px;
+    margin: 10px 0;
+  }
+
+  .parentDemo * {
+    display: block;
+    border: 2px solid #aaa;
+    color: #aaa;
+    padding: 5px;
+    margin: 15px;
+  }
+
+  .navStyle li {
+    margin: 10px;
+  }
+  .navStyle a {
+    color: var(--textColor);
+  }
+  .navStyle li.active,
+  .navStyle li.active a,
+  .navStyle li a:hover {
+    background: var(--mainColor);
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  @media screen and (max-width: 768px) {
+    .pageTitle {
+      font-size: 20px;
+    }
+    .theme {
+      position: initial;
+      padding: 80px 0 0 30px;
+    }
+  }
+</style>
+<script>
+  $(document).ready(function () {
+    setNavStyle();
+    $("html,body").scrollTop(0);
+
+    var list = [],
+      idList = [];
+    $(".title, .subTitle").each(function (i) {
+      $(this).attr("id", i);
+      idList.push(i);
+      list.push('<li><a href="#' + i + '">' + $(this).text() + "</a></li>");
+    });
+    $(".navStyle").prepend(list);
+
+    $(window).resize(function () {
+      setNavStyle();
+    });
+    $(".goTop").click(function () {
+      $(this).css("outline", "none");
+      $("html,body").animate(
+        {
+          scrollTop: "0",
+        },
+        400
+      );
+    });
+
+    $(window).scroll(function () {
+      // 是否顯示回到頂端按鈕
+      if ($(window).scrollTop() > 100) {
+        $(".goTop").fadeIn(200);
+      } else {
+        $(".goTop").fadeOut(200);
+      }
+
+      let menuIndex = 0;
+      for (let i = 0; i < idList.length; i++) {
+        if (
+          $(window).scrollTop() > $("#" + idList[i]).offset().top - 100 ||
+          $(this).scrollTop() + $(this).height() == $(document).height()
+        ) {
+          $(".navStyle")
+            .find("li")
+            .eq(i)
+            .addClass("active")
+            .siblings("li")
+            .removeClass("active");
+          menuIndex = i;
+        }
+      }
+      // nav 欄位卷軸位置
+      $(".navStyle").scrollTop(30 * menuIndex);
+    });
+
+    $(".nav li a").click(function () {
+      let targetID = $(this).context.href.split("#")[1];
+      $("html, body").animate(
+        {
+          scrollTop: $(`#${targetID}`).offset().top - 70,
+        },
+        400
+      );
+    });
+
+    $(".dark").click(function () {
+      $(":root")[0].style.setProperty("--backgroundColor", "#222");
+      $(":root")[0].style.setProperty("--textColor", "#fff");
+      $(".table-bordered")
+        .find("th")
+        .css("border", "solid 1px var(--textColor)");
+      $(this).css("background", "var(--mainColor)");
+      $(".light").css("background", "#aaa");
+    });
+    $(".light").click(function () {
+      $(":root")[0].style.setProperty("--backgroundColor", "#dedede");
+      $(":root")[0].style.setProperty("--textColor", "#222");
+      $(".table-bordered").find("th").css("border", "solid 1px #aaa");
+      $(this).css("background", "var(--mainColor)");
+      $(".dark").css("background", "#222");
+    });
+
+    // demo 功能
+    $(".demo_Show_Hide_Text").click(function () {
+      $(".demo_Show_Hide_Div").toggle();
+    });
+
+    $(".demo_Fade_Text").click(function () {
+      $(".demo_Fade_Div").fadeToggle();
+    });
+
+    $("#fadeTo_opacity_range").on("change", function () {
+      $("#fadeTo_opacity_text").val(
+        `${$("#fadeTo_opacity_range").val() / 100}`
+      );
+    });
+    $("#fadeTo_opacity_text").on("change", function () {
+      let value = $(this).val();
+      if (!isNaN(value) && Number(value) >= 0 && Number(value) <= 1) {
+        $("#fadeTo_opacity_range").val($("#fadeTo_opacity_text").val() * 100);
+      } else {
+        $(this).val(0.5);
+      }
+    });
+
+    $(".demo_FadeTo_Text").click(function () {
+      let value = $("#fadeTo_opacity_text").val();
+      if (value === "") {
+        value = 0.5;
+      }
+      $(".demo_FadeTo_Div").fadeTo("slow", value);
+    });
+
+    $(".demo_Slide_Text").click(function () {
+      $(".demo_Slide_Div").slideToggle();
+    });
+
+    $(".demo_Animate_Text").click(function () {
+      if ($(".demo_Animate_Div").css("opacity") === "0.6") {
+        // 已經執行過動畫
+        $(".demo_Animate_Div").animate(
+          {
+            opacity: "1",
+            width: "100%",
+            marginLeft: "0",
+          },
+          600
+        );
+      } else {
+        $(".demo_Animate_Div").animate(
+          {
+            opacity: "0.6",
+            width: "40%",
+            marginLeft: "30%",
+          },
+          600
+        );
+      }
+    });
+
+    $(".span1")
+      .parent()
+      .css({ color: "deeppink", border: "2px solid deeppink" });
+    $(".ul1")
+      .parentsUntil(".parentDemo")
+      .css({ color: "orange", border: "2px solid orange" });
+  });
+
+  $("p.demo_seletor_first_p:first-child").css("background-color", "orange");
+  $("p.demo_seletor_first_p:first-of-type").css("text-align", "center");
+
+  function setNavStyle() {
+    if ($(window).innerWidth() < 768) {
+      $(".navStyle").css({
+        position: "initial",
+        maxWidth: "initial",
+        marginTop: "10px",
+      });
+      $(".note:first-child").css({
+        marginTop: 0,
+      });
+    } else {
+      $(".navStyle").css({
+        position: "fixed",
+        maxWidth: "20%",
+        marginTop: "100px",
+        height: "calc(100% - 150px)",
+        overflow: "auto",
+      });
+      $(".note:first-child").css({
+        marginTop: "90px",
+      });
+    }
+  }
+</script>
