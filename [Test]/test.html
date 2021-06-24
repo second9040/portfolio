@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>測試頁面</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
+  </head>
+
+  <body class="outerContainer">
+    <div id="app1" class="innerContainer">
+      <div class="pageTitle">測試頁面</div>
+      <div class="testTitle">測試 input 開啟相機</div>
+      <div class="imageBox" :class="{'noBorder': pictureSrc}">
+        <img :src="pictureSrc" alt="" v-if="pictureSrc">
+      </div>
+      <div class="btn">
+        <label>
+          開啟鏡頭
+          <input type="file" accept="image/*" capture @change="callCamara">
+        </label>
+      </div>
+    </div>
+  </body>
+
+</html>
+<script>
+  new Vue({
+    el: "#app1",
+    data: {
+      pictureSrc: ''
+    },
+    methods: {
+      callCamara(input) {
+        let file = input.target.files[0]
+        this.pictureSrc = URL.createObjectURL(file)
+      }
+    }
+  });
+</script>
+<style>
+  .outerContainer {
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: 'Helvetica Neue';
+  }
+
+  .innerContainer {
+    padding: 0 50px 50px;
+    background-color: #fff;
+  }
+
+  .pageTitle {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    padding: 40px 0 10px 0;
+    color: #455A64;
+    letter-spacing: 3px;
+  }
+
+  .testTitle {
+    font-size: 16px;
+    text-align: center;
+    color: #000;
+  }
+
+  .imageBox {
+    text-align: center;
+    border: solid 1px #ccc;
+    max-width: 400px;
+    height: 350px;
+    margin: 20px auto 50px;
+    position: relative;
+  }
+
+  .imageBox img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 400px;
+    height: 350px;
+  }
+
+  .noBorder {
+    border: none;
+  }
+
+  .btn {
+    border-radius: 50px;
+    background: #ffa551;
+    color: #fff;
+    font-size: 14px;
+    padding: 15px 10px;
+    letter-spacing: 8px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    cursor: pointer;
+    position: relative;
+    height: 30px;
+  }
+
+  .btn label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn input {
+    display: none;
+  }
+</style>
