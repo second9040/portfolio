@@ -18,10 +18,10 @@
     <div class="contentBox" id="spa1">
       <div :class="{'asideMask':showAside}"></div>
       <div class="hideAside" :class="{'showAside':showAside}">
-        <div class="close" @click="changeMobileAside(false)">
-          <i class="far fa-times-circle" :class="{'scrollDown':isScroll,'isClick':clicked=='#close'}" ></i>關閉選單
-        </div>
         <ul>
+          <div class="close" @click="changeMobileAside(false)">
+            <i class="far fa-times-circle" :class="{'scrollDown':isScroll,'isClick':clicked=='#close'}" ></i>關閉選單
+          </div>
           <li v-for="(item,i) in menuTitle" :key=i>
             <a :class="{'scrollDown':isScroll,'isClick':clicked==item[0]}" @click="goto(item[0])" >{{item[1]}}</a >
           </li>
