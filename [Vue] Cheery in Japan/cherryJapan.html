@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </head>
@@ -63,7 +63,7 @@
           </div>
           <div class="news2020">
             <div class="leftTitle">
-              <span>２０２０</span>
+              <span v-if="thisYear">{{ thisYear }}</span>
               <svg class="svgWave" viewBox="0 55 500 170" preserveAspectRatio="none" >
                 <path d="M3,146.1c17.1-8.8,33.5-17.8,51.4-17.8c15.6,0,17.1,18.1,30.2,18.1c22.9,0,36-18.6,53.9-18.6 c17.1,0,21.3,18.5,37.5,18.5c21.3,0,31.8-18.6,49-18.6c22.1,0,18.8,18.8,36.8,18.8c18.8,0,37.5-18.6,49-18.6c20.4,0,17.1,19,36.8,19 c22.9,0,36.8-20.6,54.7-18.6c17.7,1.4,7.1,19.5,33.5,18.8c17.1,0,47.2-6.5,61.1-15.6" stroke="#ffb0ff" fill="none" stroke-width="10" ></path>
               </svg>
@@ -235,7 +235,7 @@
                 </p>
               </div>
             </div>
-            <div class="down"> 版型參考 <p><a href="https://ecc.pma.mdu.edu.tw/"  target="_blank">明道大學精緻農學系</a></p> </div>
+            <div class="down"> 版型參考 <p>明道大學精緻農學系(網站已關閉)</p> </div>
           </div>
           <div class="goTop" :class="{'show':isScroll}" @click="goto('#spa1')">
             <i class="fa fa-chevron-up" aria-hidden="true"></i>
@@ -269,6 +269,7 @@
       selectShowType2:"投影片",
       showPureImage:false,
       showPureImage2:false,
+      thisYear: 0,
       menuTitle:[
         ["#spa1","櫻花品種"], ["#cherryNews","賞櫻情報"], ["#cooldetecter","開花預測圖"], ["#Tip","賞櫻小知識"], ["#sceneFilm","景點推薦"]
       ],
@@ -391,6 +392,7 @@
       window.addEventListener("scroll", this.scroll);
       this.newSwiper(".swiper1",".swiperPage1")
       this.newSwiper(".swiper2",".swiperPage2")
+      this.thisYear = 1900 + new Date().getYear();
     },
   });
 </script>
