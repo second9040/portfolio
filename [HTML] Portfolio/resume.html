@@ -441,194 +441,206 @@
     color: #13ab67;
   }
 </style>
-<style lang="css">
-  .intro {
-    display: flex;
-    margin-top: 50px;
-    @media screen and (max-width: 576px) {
-      display: block;
-    }
-    .left {
-      width: 120px;
-      display: flex;
-      align-items: center;
-      img {
-        width: 100px;
-        height: auto;
-      }
-      @media screen and (max-width: 576px) {
-        width: 100%;
-        justify-content: center;
-        img {
-          margin-bottom: 15px;
-        }
-      }
-    }
-    .right {
-      width: calc(100% - 120px);
-      @media screen and (max-width: 576px) {
-        width: 100%;
-      }
-      .brief_intro p {
-        margin-bottom: 15px;
-      }
-      p:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  .experience {
-    padding: 20px 0;
-    .content {
-      position: relative;
-      padding: 0px 10px 10px 25px;
-      border-left: solid 2px #aaa;
-      .progress_circle {
-        border-radius: 50%;
-        width: 8px;
-        height: 8px;
-        background-color: #aaa;
-        position: absolute;
-        top: 0;
-        left: -5px;
-        &.for_end {
-          top: 5px;
-        }
-      }
-      p {
-        margin-bottom: 0px;
-        &.duration {
-          margin-bottom: 8px;
-        }
-      }
-    }
-  }
-
-  .education {
-    display: flex;
-    justify-content: space-between;
-    @media screen and (max-width: 576px) {
-      display: block;
-    }
-    .left,
-    .right {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      @media screen and (max-width: 576px) {
-        justify-content: flex-start;
-        margin-bottom: 20px;
-      }
-      img {
-        width: 50px;
-        height: auto;
-        margin-right: 15px;
-        @media screen and (max-width: 576px) {
-          margin-bottom: 5px;
-        }
-      }
-    }
-    .duration {
-      margin-bottom: 0;
-    }
-  }
-
-  .skill_title {
-    margin: 10px 0;
-    div {
-      border-bottom: solid 1px #13ab67;
-      text-align: left;
-      width: 30%;
-      margin-right: 2%;
-      padding-bottom: 5px;
-      @media screen and (max-width: 576px) {
-        width: 100%;
-        border-left: solid 5px #13ab67;
-        border-bottom-width: 0;
-        padding-left: 10px;
-        font-weight: bold;
-      }
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-
-  .skill_content {
-    div {
-      text-align: left;
-      width: 30%;
-      margin-right: 2%;
-      @media screen and (max-width: 576px) {
-        width: 100%;
-      }
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-
-  .portfolio_item {
-    border-bottom: solid 1px #13ab67;
-    margin: 25px 0;
-    padding-bottom: 25px;
-    display: flex;
-    justify-content: space-between; 
-    @media screen and (max-width: 576px) {
-      width: 100%;
-      display: block;
-    }
-    &:last-child {
-      margin-bottom: 50px;
-      border-bottom-width: 0;
-    }
-    .left {
-      width: 40%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      @media screen and (max-width: 576px) {
-        width: 100%;
-        display: block;
-      }
-      img {
-        width: 100%;
-        height: auto;
-        box-shadow: 2px 2px 2px #aaa;
-      }
-    }
-
-    .right {
-      width: 60%;
-      padding-left: 25px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      @media screen and (max-width: 576px) {
-        width: 100%;
-        display: block;
-        padding-top: 20px;
-        padding-left: 0px;
-      }
-    }
-  }
-
-@media screen and (max-width: 576px) {
-  .show_in_pc {
-    display: none;
-  }
-  .show_in_mobile {
-    display: block;
-  }
+<style lang="css">.intro {
+	 display: flex;
+	 margin-top: 50px;
 }
-@media screen and (min-width: 577px) {
-  .show_in_pc {
-    display: block;
-  }
-  .show_in_mobile {
-    display: none;
-  }
+ @media screen and (max-width: 576px) {
+	 .intro {
+		 display: block;
+	}
 }
+ .intro .left {
+	 width: 120px;
+	 display: flex;
+	 align-items: center;
+}
+ .intro .left img {
+	 width: 100px;
+	 height: auto;
+}
+ @media screen and (max-width: 576px) {
+	 .intro .left {
+		 width: 100%;
+		 justify-content: center;
+	}
+	 .intro .left img {
+		 margin-bottom: 15px;
+	}
+}
+ .intro .right {
+	 width: calc(100% - 120px);
+}
+ @media screen and (max-width: 576px) {
+	 .intro .right {
+		 width: 100%;
+	}
+}
+ .intro .right .brief_intro p {
+	 margin-bottom: 15px;
+}
+ .intro .right p:last-child {
+	 margin-bottom: 0;
+}
+ .experience {
+	 padding: 20px 0;
+}
+ .experience .content {
+	 position: relative;
+	 padding: 0px 10px 10px 25px;
+	 border-left: solid 2px #aaa;
+}
+ .experience .content .progress_circle {
+	 border-radius: 50%;
+	 width: 8px;
+	 height: 8px;
+	 background-color: #aaa;
+	 position: absolute;
+	 top: 0;
+	 left: -5px;
+}
+ .experience .content .progress_circle.for_end {
+	 top: 5px;
+}
+ .experience .content p {
+	 margin-bottom: 0px;
+}
+ .experience .content p.duration {
+	 margin-bottom: 8px;
+}
+ .education {
+	 display: flex;
+	 justify-content: space-between;
+}
+ @media screen and (max-width: 576px) {
+	 .education {
+		 display: block;
+	}
+}
+ .education .left, .education .right {
+	 display: flex;
+	 align-items: center;
+	 justify-content: space-around;
+}
+ @media screen and (max-width: 576px) {
+	 .education .left, .education .right {
+		 justify-content: flex-start;
+		 margin-bottom: 20px;
+	}
+}
+ .education .left img, .education .right img {
+	 width: 50px;
+	 height: auto;
+	 margin-right: 15px;
+}
+ @media screen and (max-width: 576px) {
+	 .education .left img, .education .right img {
+		 margin-bottom: 5px;
+	}
+}
+ .education .duration {
+	 margin-bottom: 0;
+}
+ .skill_title {
+	 margin: 10px 0;
+}
+ .skill_title div {
+	 border-bottom: solid 1px #13ab67;
+	 text-align: left;
+	 width: 30%;
+	 margin-right: 2%;
+	 padding-bottom: 5px;
+}
+ @media screen and (max-width: 576px) {
+	 .skill_title div {
+		 width: 100%;
+		 border-left: solid 5px #13ab67;
+		 border-bottom-width: 0;
+		 padding-left: 10px;
+		 font-weight: bold;
+	}
+}
+ .skill_title div:last-child {
+	 margin-right: 0;
+}
+ .skill_content div {
+	 text-align: left;
+	 width: 30%;
+	 margin-right: 2%;
+}
+ @media screen and (max-width: 576px) {
+	 .skill_content div {
+		 width: 100%;
+	}
+}
+ .skill_content div:last-child {
+	 margin-right: 0;
+}
+ .portfolio_item {
+	 border-bottom: solid 1px #13ab67;
+	 margin: 25px 0;
+	 padding-bottom: 25px;
+	 display: flex;
+	 justify-content: space-between;
+}
+ @media screen and (max-width: 576px) {
+	 .portfolio_item {
+		 width: 100%;
+		 display: block;
+	}
+}
+ .portfolio_item:last-child {
+	 margin-bottom: 50px;
+	 border-bottom-width: 0;
+}
+ .portfolio_item .left {
+	 width: 40%;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+}
+ @media screen and (max-width: 576px) {
+	 .portfolio_item .left {
+		 width: 100%;
+		 display: block;
+	}
+}
+ .portfolio_item .left img {
+	 width: 100%;
+	 height: auto;
+	 box-shadow: 2px 2px 2px #aaa;
+}
+ .portfolio_item .right {
+	 width: 60%;
+	 padding-left: 25px;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 align-items: flex-start;
+}
+ @media screen and (max-width: 576px) {
+	 .portfolio_item .right {
+		 width: 100%;
+		 display: block;
+		 padding-top: 20px;
+		 padding-left: 0px;
+	}
+}
+ @media screen and (max-width: 576px) {
+	 .show_in_pc {
+		 display: none;
+	}
+	 .show_in_mobile {
+		 display: block;
+	}
+}
+ @media screen and (min-width: 577px) {
+	 .show_in_pc {
+		 display: block;
+	}
+	 .show_in_mobile {
+		 display: none;
+	}
+}
+ 
 </style>
